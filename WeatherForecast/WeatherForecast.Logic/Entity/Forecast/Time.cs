@@ -3,6 +3,9 @@ using WeatherForecast.Logic.Entity.Forecast.Virtual;
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Погода на период времени
+	/// </summary>
 	[XmlRoot("time")]
 	public class Time
 	{
@@ -42,9 +45,13 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		[XmlElement("clouds")]
 		public Clouds Clouds { get; set; }
 
-
-
 		public DailyTime DailyTime => _dailyTime ?? (_dailyTime = new DailyTime(Day));
 		public HoursTime HoursTime => _hoursTime ?? (_hoursTime = new HoursTime(From, To));
+
+		public override string ToString()
+		{
+			var date = !DailyTime.IsEmpty ? DailyTime.ToString() : HoursTime.ToString();
+			return $"{date}: {Temperature}";
+		}
 	}
 }

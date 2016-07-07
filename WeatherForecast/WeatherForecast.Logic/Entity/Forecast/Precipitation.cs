@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Осадки
+	/// </summary>
 	[XmlRoot("precipitation")]
 	public class Precipitation
 	{
@@ -10,5 +13,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 
 		[XmlAttribute("type")]
 		public string Type { get; set; }
+
+		public override string ToString()
+		{
+			return Type;
+		}
 	}
 }

@@ -13,8 +13,20 @@ namespace WeatherForecast.Logic.Entity.Forecast.Virtual
 
 		public HoursTime(string from, string to)
 		{
-			From = DateTime.Parse(from);
-			To = DateTime.Parse(to);
+			DateTime dateTime;
+			DateTime.TryParse(from, out dateTime);
+			From = dateTime;
+
+			dateTime = default(DateTime);
+			DateTime.TryParse(to, out dateTime);
+			To = dateTime;
+		}
+
+		public bool IsEmpty => From == default(DateTime) && To == default(DateTime);
+
+		public override string ToString()
+		{
+			return $"From {From} to {To}";
 		}
 	}
 }

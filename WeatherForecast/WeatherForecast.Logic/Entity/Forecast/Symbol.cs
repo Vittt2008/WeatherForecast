@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Краткая погода
+	/// </summary>
 	[XmlRoot("symbol")]
 	public class Symbol
 	{
@@ -10,5 +13,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 
 		[XmlAttribute("name")]
 		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

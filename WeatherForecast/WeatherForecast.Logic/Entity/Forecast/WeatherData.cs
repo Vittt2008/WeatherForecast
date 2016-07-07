@@ -4,6 +4,9 @@ using System.Xml.Serialization;
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Информация о погоде в городе
+	/// </summary>
 	[XmlRoot("weatherdata")]
 	public class WeatherData
 	{
@@ -13,5 +16,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		[XmlArray("forecast")]
 		[XmlArrayItem("time")]
 		public List<Time> Times { get; set; }
+
+		public override string ToString()
+		{
+			return Location.ToString();
+		}
 	}
 }

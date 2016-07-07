@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Влажность
+	/// </summary>
 	[XmlRoot("humidity")]
 	public class Humidity
 	{
@@ -10,5 +13,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 
 		[XmlAttribute("unit")]
 		public string Unit { get; set; }
+
+		public override string ToString()
+		{
+			return $"{Value}{Unit}";
+		}
 	}
 }

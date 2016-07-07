@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Weather
 {
+	/// <summary>
+	/// Скорость ветра
+	/// </summary>
 	[XmlRoot("speed")]
 	public class Speed
 	{
@@ -10,5 +13,10 @@ namespace WeatherForecast.Logic.Entity.Weather
 
 		[XmlAttribute("name")]
 		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return $"{Name}. {Value} m/s";
+		}
 	}
 }

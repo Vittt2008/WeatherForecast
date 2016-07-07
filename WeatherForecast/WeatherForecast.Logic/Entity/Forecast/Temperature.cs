@@ -1,8 +1,12 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using WeatherForecast.Logic.Entity.Forecast.Virtual;
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Температура
+	/// </summary>
 	[XmlRoot("temperature")]
 	public class Temperature
 	{
@@ -36,5 +40,11 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		public DailyTemperature DailyTemperature => _dailyTemperature ?? (_dailyTemperature = new DailyTemperature(Unit, Day, Min, Max, Night, Eve, Morn));
 
 		public HoursTemperature HoursTemperature => _hoursTemperature ?? (_hoursTemperature = new HoursTemperature(Unit, Value, Min, Max));
+
+		public override string ToString()
+		{
+			var temperature = Math.Abs(Value) > 10E-4 ? Value : Day;
+			return $"{temperature}°C";
+		}
 	}
 }

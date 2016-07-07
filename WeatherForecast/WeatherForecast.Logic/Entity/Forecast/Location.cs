@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Местоположение
+	/// </summary>
 	[XmlRoot("location")]
 	public class Location
 	{
@@ -10,5 +13,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 
 		[XmlElement("country")]
 		public string Country { get; set; }
+
+		public override string ToString()
+		{
+			return $"{City}, {Country}";
+		}
 	}
 }

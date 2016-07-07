@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Давление
+	/// </summary>
 	[XmlRoot("pressure")]
 	public class Pressure
 	{
@@ -10,5 +13,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 
 		[XmlAttribute("value")]
 		public float Value { get; set; }
+
+		public override string ToString()
+		{
+			return $"{Value} {Unit}";
+		}
 	}
 }

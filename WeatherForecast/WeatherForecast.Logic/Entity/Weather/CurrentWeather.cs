@@ -3,6 +3,9 @@ using WeatherForecast.Logic.Entity.Forecast;
 
 namespace WeatherForecast.Logic.Entity.Weather
 {
+	/// <summary>
+	/// Текущая погода
+	/// </summary>
 	[XmlRoot("current")]
 	public class CurrentWeather
 	{
@@ -29,5 +32,10 @@ namespace WeatherForecast.Logic.Entity.Weather
 
 		[XmlElement("weather")]
 		public Weather Weather { get; set; }
+
+		public override string ToString()
+		{
+			return $"{City} {Temperature}";
+		}
 	}
 }

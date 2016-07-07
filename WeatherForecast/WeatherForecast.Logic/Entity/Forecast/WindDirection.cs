@@ -2,6 +2,9 @@
 
 namespace WeatherForecast.Logic.Entity.Forecast
 {
+	/// <summary>
+	/// Направление ветра
+	/// </summary>
 	[XmlRoot("windDirection")]
 	public class WindDirection
 	{
@@ -13,5 +16,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 
 		[XmlAttribute("name")]
 		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return $"{Code} {Deg}°";
+		}
 	}
 }
