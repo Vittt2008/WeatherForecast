@@ -7,6 +7,7 @@ namespace WeatherForecast.Logic.Entity.Picture
 	public class FlickrData
 	{
 		[XmlArray("photos")]
-		public List<Photo> photos { get; set; }
+		[XmlArrayItem("photo")]
+		public List<Photo> Photos { get; set; }
 	}
 }

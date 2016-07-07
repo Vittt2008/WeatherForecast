@@ -10,13 +10,13 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		private HoursTime _hoursTime;
 
 		[XmlAttribute("day")]
-		private string Day { get; set; }
+		public string Day { get; set; }
 
 		[XmlAttribute("from")]
-		private string From { get; set; }
+		public string From { get; set; }
 
 		[XmlAttribute("to")]
-		private string To { get; set; }
+		public string To { get; set; }
 
 		[XmlElement("symbol")]
 		public Symbol Symbol { get; set; }

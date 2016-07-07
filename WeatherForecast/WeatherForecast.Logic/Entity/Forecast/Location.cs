@@ -5,10 +5,10 @@ namespace WeatherForecast.Logic.Entity.Forecast
 	[XmlRoot("location")]
 	public class Location
 	{
-		[XmlAttribute("name")]
+		[XmlElement("name")]
 		public string City { get; set; }
 
-		[XmlAttribute("country")]
+		[XmlElement("country")]
 		public string Country { get; set; }
 	}
 }

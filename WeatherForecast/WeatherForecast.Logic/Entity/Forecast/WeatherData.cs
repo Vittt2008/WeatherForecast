@@ -10,7 +10,8 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		[XmlElement("location")]
 		public Location Location { get; set; }
 
-		[XmlArray("location")]
+		[XmlArray("forecast")]
+		[XmlArrayItem("time")]
 		public List<Time> Times { get; set; }
 	}
 }

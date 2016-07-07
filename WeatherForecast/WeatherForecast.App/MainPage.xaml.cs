@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WeatherForecast.Logic.ServiceImpl;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +26,19 @@ namespace WeatherForecast.App
 		public MainPage()
 		{
 			this.InitializeComponent();
+		}
+
+		private async void BtClickOnClick(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				var service = new WeatherService();
+				var data = await service.GetHoursForecast("Moscow");
+			}
+			catch (Exception exception)
+			{
+				var message = exception.Message;
+			}
 		}
 	}
 }

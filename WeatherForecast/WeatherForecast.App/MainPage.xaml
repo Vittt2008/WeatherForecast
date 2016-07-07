@@ -8,6 +8,6 @@
 	mc:Ignorable="d">
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+		<Button x:Name="btClick" Content="CLICK" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtClickOnClick" />
 	</Grid>
 </Page>

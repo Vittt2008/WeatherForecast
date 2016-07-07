@@ -8,7 +8,7 @@ namespace WeatherForecast.Logic.Entity.Weather
 		[XmlAttribute("value")]
 		public string Value { get; set; }
 
-		[XmlElement("name")]
+		[XmlAttribute("name")]
 		public string Name { get; set; }
 	}
 }
