@@ -49,6 +49,6 @@
 				</TextBlock>
 			</Canvas>
 		</StackPanel>
-		<control:CurrentWeatherControl x:Name="CurrentWeatherControl" Height="250" Width="300"/>
+		<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
 	</Grid>
 </Page>

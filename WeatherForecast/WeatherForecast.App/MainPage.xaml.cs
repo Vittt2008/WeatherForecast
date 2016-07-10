@@ -116,13 +116,20 @@ namespace WeatherForecast.App
 
 		private async void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			var service = new WeatherService();
-			var data = await service.GetCurrentWeather("Moscow");
-			var viewModel = data.ToViewModel();
-			//var file = File.ReadAllText("CurrentWeather.xml");
-			//var data = file.Parse<CurrentWeather>();
-			CurrentWeatherControl.DataContext = viewModel;
-			//Something();
+			var weatherService = new WeatherService();
+			var flickrService = new PhotoService();
+			var weatherTask = weatherService.GetCurrentWeather("Sankt-Peterburg");
+			var flickrTask = flickrService.GetFlickUrlPhoto("Sankt-Peterburg");
+			await Task.WhenAll(weatherTask, flickrTask);
+
+			var weatherData = await weatherTask;
+			var flickrData = await flickrTask;
+
+			var currentWeatherViewModel = weatherData.ToViewModel();
+			var cityPhotoUrl = flickrData.RandomPhotoUrl;
+
+			CurrentWeatherControl.DataContext = currentWeatherViewModel;
+			CurrentWeatherControl.CityPhoto = cityPhotoUrl;
 		}
 
 		private async void Something()
@@ -143,7 +150,7 @@ namespace WeatherForecast.App
 			};
 			var tasks = city.Select(x => service.GetHoursForecast(x)).ToArray();
 			var result = await Task.WhenAll(tasks);
-			var symbols = result.SelectMany(x => x.Times).Select(x => x.Symbol.Name).Distinct().OrderBy(x=>x).ToList();
+			var symbols = result.SelectMany(x => x.Times).Select(x => x.Symbol.Name).Distinct().OrderBy(x => x).ToList();
 		}
 	}
 }

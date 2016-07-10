@@ -14,48 +14,55 @@
 	x:Name="currentWeather">
 
 	<UserControl.Resources>
-		<temperature:CelsiusConverter x:Key="CelsiusConverter"></temperature:CelsiusConverter>
-		<temperature:FahrenheitConverter x:Key="FahrenheitConverter"></temperature:FahrenheitConverter>
-
 		<converter:CapitalizeConverter x:Key="CapitalizeConverter"></converter:CapitalizeConverter>
 		<converter:LastUpdateConverter x:Key="LastUpdateConverter"></converter:LastUpdateConverter>
 		<converter:HumidityConverter x:Key="HumidityConverter"></converter:HumidityConverter>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
 		<converter:InternetImageConverter x:Key="InternetImageConverter"></converter:InternetImageConverter>
 
+		<temperature:CelsiusConverter x:Key="CelsiusConverter"></temperature:CelsiusConverter>
+		<temperature:FahrenheitConverter x:Key="FahrenheitConverter"></temperature:FahrenheitConverter>
+
 		<pressure:MmHgConverter x:Key="MmHgConverter"></pressure:MmHgConverter>
 		<pressure:InHgConverter x:Key="InHgConverter"></pressure:InHgConverter>
 
 		<speed:MetresPerSecondConverter x:Key="MetresPerSecondConverter"></speed:MetresPerSecondConverter>
 		<speed:MilesPerHourConverter x:Key="MilesPerHourConverter"></speed:MilesPerHourConverter>
+
+		<Style TargetType="TextBlock">
+			<Setter Property="TextBlock.Foreground" Value="White"></Setter>
+		</Style>
 	</UserControl.Resources>
 
-	<StackPanel Orientation="Vertical" Background="{Binding Converter={StaticResource InternetImageConverter}}">
-		<TextBlock Text="{Binding Path=City}" TextAlignment="Center"></TextBlock>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-			<Image Height="80" Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
-			<!--<Image Source="../Assets/Weather/sunny.png" VerticalAlignment="Center" Margin="10,0,10,0" Height="80"></Image>-->
-			<TextBlock Text="{Binding Path=Temperature, Converter={StaticResource CelsiusConverter}}" FontSize="44" VerticalAlignment="Center"></TextBlock>
-		</StackPanel>
-		<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Center"></TextBlock>
-		<TextBlock Text="{Binding Path=LastUpdate, Converter={StaticResource LastUpdateConverter}}" TextAlignment="Center"></TextBlock>
-		<StackPanel HorizontalAlignment="Center">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition></RowDefinition>
-					<RowDefinition></RowDefinition>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition></ColumnDefinition>
-					<ColumnDefinition></ColumnDefinition>
-				</Grid.ColumnDefinitions>
+	<Grid x:Name="rootContainer">
+		<StackPanel x:Name="opacityContainer"/>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+			<TextBlock Text="{Binding Path=City}" TextAlignment="Center"></TextBlock>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Image Height="80" Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
+				<!--<Image Source="../Assets/Weather/sunny.png" VerticalAlignment="Center" Margin="10,0,10,0" Height="80"></Image>-->
+				<TextBlock Text="{Binding Path=Temperature, Converter={StaticResource CelsiusConverter}}" FontSize="44" VerticalAlignment="Center"></TextBlock>
+			</StackPanel>
+			<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Center"></TextBlock>
+			<TextBlock Text="{Binding Path=LastUpdate, Converter={StaticResource LastUpdateConverter}}" TextAlignment="Center"></TextBlock>
+			<StackPanel HorizontalAlignment="Center">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
 
-				<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Humidity, Converter={StaticResource HumidityConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
-				<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Pressure, Converter={StaticResource MmHgConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Humidity, Converter={StaticResource HumidityConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
+					<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Pressure, Converter={StaticResource MmHgConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 
-				<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Wind.Name, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
-				<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Wind, Converter={StaticResource MetresPerSecondConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
-			</Grid>
+					<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Wind.Name, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Wind, Converter={StaticResource MetresPerSecondConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
+				</Grid>
+			</StackPanel>
 		</StackPanel>
-	</StackPanel>
+	</Grid>
 </UserControl>

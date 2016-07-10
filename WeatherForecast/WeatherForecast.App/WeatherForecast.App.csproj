@@ -115,6 +115,7 @@
     <None Include="WeatherForecast.App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\city_photo.jpg" />
     <Content Include="Assets\Weather\cloudy1.png" />
     <Content Include="Assets\Weather\cloudy1_night.png" />
     <Content Include="Assets\Weather\cloudy2.png" />
