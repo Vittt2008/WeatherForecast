@@ -118,6 +118,7 @@
     <Compile Include="Converter\Temperature\CelsiusConverter.cs" />
     <Compile Include="Converter\Temperature\FahrenheitConverter.cs" />
     <Compile Include="Converter\WeatherToImageConverter.cs" />
+    <Compile Include="EntityConverter\EntityConverterEx.cs" />
     <Compile Include="Entity\Forecast\Location.cs" />
     <Compile Include="Entity\Forecast\Clouds.cs" />
     <Compile Include="Entity\Forecast\Virtual\DailyTemperature.cs" />

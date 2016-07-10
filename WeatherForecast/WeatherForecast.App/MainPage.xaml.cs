@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using WeatherForecast.Logic;
 using WeatherForecast.Logic.Entity.Weather;
+using WeatherForecast.Logic.EntityConverter;
 using WeatherForecast.Logic.ServiceImpl;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -117,10 +118,11 @@ namespace WeatherForecast.App
 		{
 			var service = new WeatherService();
 			var data = await service.GetCurrentWeather("Moscow");
+			var viewModel = data.ToViewModel();
 			//var file = File.ReadAllText("CurrentWeather.xml");
 			//var data = file.Parse<CurrentWeather>();
-			CurrentWeatherControl.DataContext = data;
-			Something();
+			CurrentWeatherControl.DataContext = viewModel;
+			//Something();
 		}
 
 		private async void Something()

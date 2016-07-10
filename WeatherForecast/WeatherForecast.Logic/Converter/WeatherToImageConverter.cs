@@ -23,15 +23,7 @@ namespace WeatherForecast.Logic.Converter
 
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			var weather = string.Empty;
-			var time = value as Time;
-			if (time != null)
-				weather = time.Symbol.Name;
-
-			var currentWeather = value as CurrentWeather;
-			if (currentWeather != null)
-				weather = currentWeather.Weather.Value;
-
+			var weather = value as string;
 			if (string.IsNullOrEmpty(weather))
 				return null;
 

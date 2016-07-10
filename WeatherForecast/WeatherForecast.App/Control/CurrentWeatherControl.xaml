@@ -10,7 +10,7 @@
 	xmlns:pressure="using:WeatherForecast.Logic.Converter.Pressure"
 	xmlns:speed="using:WeatherForecast.Logic.Converter.Speed"
 	mc:Ignorable="d"
-	d:DataContext="{d:DesignData CurrentWeather}"
+	d:DataContext="{d:DesignData CurrentWeatherViewModel}"
 	x:Name="currentWeather">
 
 	<UserControl.Resources>
@@ -30,15 +30,15 @@
 		<speed:MilesPerHourConverter x:Key="MilesPerHourConverter"></speed:MilesPerHourConverter>
 	</UserControl.Resources>
 
-	<StackPanel Orientation="Vertical" Background="{Binding Path=Weather.Value, Converter={StaticResource InternetImageConverter}}">
+	<StackPanel Orientation="Vertical" Background="{Binding Converter={StaticResource InternetImageConverter}}">
 		<TextBlock Text="{Binding Path=City}" TextAlignment="Center"></TextBlock>
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-			<Image Height="80" Source="{Binding Path=DataContext, Converter={StaticResource WeatherToImageConverter}, ElementName=currentWeather}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
+			<Image Height="80" Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
 			<!--<Image Source="../Assets/Weather/sunny.png" VerticalAlignment="Center" Margin="10,0,10,0" Height="80"></Image>-->
-			<TextBlock Text="{Binding Path=Temperature.Value, Converter={StaticResource CelsiusConverter}}" FontSize="44" VerticalAlignment="Center"></TextBlock>
+			<TextBlock Text="{Binding Path=Temperature, Converter={StaticResource CelsiusConverter}}" FontSize="44" VerticalAlignment="Center"></TextBlock>
 		</StackPanel>
-		<TextBlock Text="{Binding Path=Weather.Value, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Center"></TextBlock>
-		<TextBlock Text="{Binding Path=LastUpdate.Value, Converter={StaticResource LastUpdateConverter}}" TextAlignment="Center"></TextBlock>
+		<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Center"></TextBlock>
+		<TextBlock Text="{Binding Path=LastUpdate, Converter={StaticResource LastUpdateConverter}}" TextAlignment="Center"></TextBlock>
 		<StackPanel HorizontalAlignment="Center">
 			<Grid>
 				<Grid.RowDefinitions>
@@ -50,10 +50,10 @@
 					<ColumnDefinition></ColumnDefinition>
 				</Grid.ColumnDefinitions>
 
-				<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Humidity.Value, Converter={StaticResource HumidityConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
-				<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Pressure.Value, Converter={StaticResource MmHgConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Humidity, Converter={StaticResource HumidityConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Pressure, Converter={StaticResource MmHgConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 
-				<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Wind.Speed.Name, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Wind.Name, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
 				<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Wind, Converter={StaticResource MetresPerSecondConverter}}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 			</Grid>
 		</StackPanel>

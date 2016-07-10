@@ -1,6 +1,6 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
-using WeatherForecast.Logic.Entity.Weather;
+using WeatherForecast.Logic.ViewModel;
 
 namespace WeatherForecast.Logic.Converter.Speed
 {
@@ -8,8 +8,8 @@ namespace WeatherForecast.Logic.Converter.Speed
 	{
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			var wind = (Wind)value;
-			var metresPerSecondString = string.Format("{0:##.#} m/s {1}° {2}", wind.Speed.Value, wind.Direction.Value, wind.Direction.Name);
+			var wind = (WindViewModel)value;
+			var metresPerSecondString = string.Format("{0:##.#} m/s {1}° {2}", wind.Value, wind.DirectionValue, wind.DirectionName);
 			return metresPerSecondString;
 		}
 

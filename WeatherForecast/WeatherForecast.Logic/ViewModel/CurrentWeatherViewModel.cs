@@ -8,7 +8,7 @@ namespace WeatherForecast.Logic.ViewModel
 		public string Weather { get; set; }
 		public float Temperature { get; set; }
 		public DateTime LastUpdate { get; set; }
-		public float Humidity { get; set; }
+		public int Humidity { get; set; }
 		public float Pressure { get; set; }
 		public WindViewModel Wind { get; set; }
 	}
