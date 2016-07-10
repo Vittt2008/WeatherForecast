@@ -6,23 +6,22 @@ namespace WeatherForecast.Logic.Entity.Forecast.Virtual
 	public class DailyTime
 	{
 		public DateTime Day { get; set; }
+		public DateTime LocalDay => Day.ToLocalTime();
 
 		public DailyTime()
 		{
 		}
 
-		public DailyTime(string day)
+		public DailyTime(DateTime day)
 		{
-			DateTime dateTime;
-			DateTime.TryParse(day, out dateTime);
-			Day = dateTime;
+			Day = day;
 		}
 
 		public bool IsEmpty => Day == default(DateTime);
 
 		public override string ToString()
 		{
-			return $"Day {Day}";
+			return LocalDay.ToString();
 		}
 	}
 }

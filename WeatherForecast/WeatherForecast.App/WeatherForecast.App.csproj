@@ -98,6 +98,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\CurrentWeatherControl.xaml.cs">
+      <DependentUpon>CurrentWeatherControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTextBox.cs" />
+    <Compile Include="DragInCanvasbehavior.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -110,6 +115,44 @@
     <None Include="WeatherForecast.App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Weather\cloudy1.png" />
+    <Content Include="Assets\Weather\cloudy1_night.png" />
+    <Content Include="Assets\Weather\cloudy2.png" />
+    <Content Include="Assets\Weather\cloudy2_night.png" />
+    <Content Include="Assets\Weather\cloudy3.png" />
+    <Content Include="Assets\Weather\cloudy3_night.png" />
+    <Content Include="Assets\Weather\cloudy4.png" />
+    <Content Include="Assets\Weather\cloudy4_night.png" />
+    <Content Include="Assets\Weather\cloudy5.png" />
+    <Content Include="Assets\Weather\dunno.png" />
+    <Content Include="Assets\Weather\fog.png" />
+    <Content Include="Assets\Weather\fog_night.png" />
+    <Content Include="Assets\Weather\hail.png" />
+    <Content Include="Assets\Weather\light_rain.png" />
+    <Content Include="Assets\Weather\mist.png" />
+    <Content Include="Assets\Weather\mist_night.png" />
+    <Content Include="Assets\Weather\overcast.png" />
+    <Content Include="Assets\Weather\shower1.png" />
+    <Content Include="Assets\Weather\shower1_night.png" />
+    <Content Include="Assets\Weather\shower2.png" />
+    <Content Include="Assets\Weather\shower2_night.png" />
+    <Content Include="Assets\Weather\shower3.png" />
+    <Content Include="Assets\Weather\sleet.png" />
+    <Content Include="Assets\Weather\snow1.png" />
+    <Content Include="Assets\Weather\snow1_night.png" />
+    <Content Include="Assets\Weather\snow2.png" />
+    <Content Include="Assets\Weather\snow2_night.png" />
+    <Content Include="Assets\Weather\snow3.png" />
+    <Content Include="Assets\Weather\snow3_night.png" />
+    <Content Include="Assets\Weather\snow4.png" />
+    <Content Include="Assets\Weather\snow5.png" />
+    <Content Include="Assets\Weather\sunny.png" />
+    <Content Include="Assets\Weather\sunny_night.png" />
+    <Content Include="Assets\Weather\tstorm1.png" />
+    <Content Include="Assets\Weather\tstorm1_night.png" />
+    <Content Include="Assets\Weather\tstorm2.png" />
+    <Content Include="Assets\Weather\tstorm2_night.png" />
+    <Content Include="Assets\Weather\tstorm3.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -124,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Control\CurrentWeatherControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

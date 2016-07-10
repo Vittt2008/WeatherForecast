@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.ServiceModel.Channels;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,6 +35,7 @@ namespace WeatherForecast.App
 				Microsoft.ApplicationInsights.WindowsCollectors.Session);
 			this.InitializeComponent();
 			this.Suspending += OnSuspending;
+			this.UnhandledException += OnUnhandledException;
 		}
 
 		/// <summary>
@@ -103,6 +106,13 @@ namespace WeatherForecast.App
 			var deferral = e.SuspendingOperation.GetDeferral();
 			//TODO: Сохранить состояние приложения и остановить все фоновые операции
 			deferral.Complete();
+		}
+
+		private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			e.Handled = true;
+			var dialog = new MessageDialog(e.Exception.ToString(), e.Message);
+			var result = await dialog.ShowAsync();
 		}
 	}
 }

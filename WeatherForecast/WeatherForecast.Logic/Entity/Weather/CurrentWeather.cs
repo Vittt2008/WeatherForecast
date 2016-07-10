@@ -33,6 +33,9 @@ namespace WeatherForecast.Logic.Entity.Weather
 		[XmlElement("weather")]
 		public Weather Weather { get; set; }
 
+		[XmlElement("lastupdate")]
+		public LastUpdate LastUpdate { get; set; }
+
 		public override string ToString()
 		{
 			return $"{City} {Temperature}";

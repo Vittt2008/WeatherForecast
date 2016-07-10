@@ -44,7 +44,7 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		public override string ToString()
 		{
 			var temperature = Math.Abs(Value) > 10E-4 ? Value : Day;
-			return $"{temperature}°C";
+			return temperature.ToString();
 		}
 	}
 }

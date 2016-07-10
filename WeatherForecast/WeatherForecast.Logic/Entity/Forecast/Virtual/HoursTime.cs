@@ -7,26 +7,24 @@ namespace WeatherForecast.Logic.Entity.Forecast.Virtual
 		public DateTime From { get; set; }
 		public DateTime To { get; set; }
 
+		public DateTime LocalFrom => From.ToLocalTime();
+		public DateTime LocalTo => To.ToLocalTime();
+
 		public HoursTime()
 		{
 		}
 
-		public HoursTime(string from, string to)
+		public HoursTime(DateTime from, DateTime to)
 		{
-			DateTime dateTime;
-			DateTime.TryParse(from, out dateTime);
-			From = dateTime;
-
-			dateTime = default(DateTime);
-			DateTime.TryParse(to, out dateTime);
-			To = dateTime;
+			From = from;
+			To = to;
 		}
 
 		public bool IsEmpty => From == default(DateTime) && To == default(DateTime);
 
 		public override string ToString()
 		{
-			return $"From {From} to {To}";
+			return $"From {LocalFrom} to {LocalTo}";
 		}
 	}
 }

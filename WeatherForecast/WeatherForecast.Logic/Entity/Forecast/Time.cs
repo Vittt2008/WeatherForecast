@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using WeatherForecast.Logic.Entity.Forecast.Virtual;
 
 namespace WeatherForecast.Logic.Entity.Forecast
@@ -13,13 +14,13 @@ namespace WeatherForecast.Logic.Entity.Forecast
 		private HoursTime _hoursTime;
 
 		[XmlAttribute("day")]
-		public string Day { get; set; }
+		public DateTime Day { get; set; }
 
 		[XmlAttribute("from")]
-		public string From { get; set; }
+		public DateTime From { get; set; }
 
 		[XmlAttribute("to")]
-		public string To { get; set; }
+		public DateTime To { get; set; }
 
 		[XmlElement("symbol")]
 		public Symbol Symbol { get; set; }

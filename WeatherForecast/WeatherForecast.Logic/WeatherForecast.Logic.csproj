@@ -107,6 +107,17 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\CapitalizeConverter.cs" />
+    <Compile Include="Converter\HumidityConverter.cs" />
+    <Compile Include="Converter\InternetImageConverter.cs" />
+    <Compile Include="Converter\LastUpdateConverter.cs" />
+    <Compile Include="Converter\Pressure\InHgConverter.cs" />
+    <Compile Include="Converter\Pressure\MmHgConverter.cs" />
+    <Compile Include="Converter\Speed\MetresPerSecondConverter.cs" />
+    <Compile Include="Converter\Speed\MilesPerHourConverter.cs" />
+    <Compile Include="Converter\Temperature\CelsiusConverter.cs" />
+    <Compile Include="Converter\Temperature\FahrenheitConverter.cs" />
+    <Compile Include="Converter\WeatherToImageConverter.cs" />
     <Compile Include="Entity\Forecast\Location.cs" />
     <Compile Include="Entity\Forecast\Clouds.cs" />
     <Compile Include="Entity\Forecast\Virtual\DailyTemperature.cs" />
@@ -128,6 +139,7 @@
     <Compile Include="Entity\Weather\Clouds.cs" />
     <Compile Include="Entity\Weather\CurrentWeather.cs" />
     <Compile Include="Entity\Weather\Direction.cs" />
+    <Compile Include="Entity\Weather\LastUpdate.cs" />
     <Compile Include="Entity\Weather\Precipitation.cs" />
     <Compile Include="Entity\Weather\Speed.cs" />
     <Compile Include="Entity\Weather\Weather.cs" />
@@ -140,6 +152,8 @@
     <Compile Include="Service\IPhotoService.cs" />
     <Compile Include="Service\IWeatherService.cs" />
     <Compile Include="Service\IWeatherServiceInternal.cs" />
+    <Compile Include="ViewModel\CurrentWeatherViewModel.cs" />
+    <Compile Include="ViewModel\WindViewModel.cs" />
     <EmbeddedResource Include="Properties\WeatherForecast.Logic.rd.xml" />
   </ItemGroup>
   <ItemGroup />
