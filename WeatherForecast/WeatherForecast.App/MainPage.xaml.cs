@@ -123,13 +123,12 @@ namespace WeatherForecast.App
 			await Task.WhenAll(weatherTask, flickrTask);
 
 			var weatherData = await weatherTask;
-			var flickrData = await flickrTask;
-
+			var cityPhotoUrl = (await flickrTask).RandomPhotoUrl;
+			var cityImage = await flickrService.GetImageFromUrl(cityPhotoUrl);
 			var currentWeatherViewModel = weatherData.ToViewModel();
-			var cityPhotoUrl = flickrData.RandomPhotoUrl;
 
 			CurrentWeatherControl.DataContext = currentWeatherViewModel;
-			CurrentWeatherControl.CityPhoto = cityPhotoUrl;
+			CurrentWeatherControl.CityPhotoImage = cityImage;
 		}
 
 		private async void Something()

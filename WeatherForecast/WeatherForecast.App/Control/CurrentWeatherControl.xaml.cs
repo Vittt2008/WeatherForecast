@@ -36,6 +36,13 @@ namespace WeatherForecast.App.Control
 				typeof(CurrentWeatherControl),
 				new PropertyMetadata(null, CityPhotoPropertyChangedCallback));
 
+		public static readonly DependencyProperty CityPhotoImageProperty =
+			DependencyProperty.Register(
+				"CityPhotoImage",
+				typeof(BitmapImage),
+				typeof(CurrentWeatherControl),
+				new PropertyMetadata(null, CityPhotoImagePropertyChangedCallback));
+
 		private static void CurrentWeatherPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
 		{
 			var currentWeatherControl = (CurrentWeatherControl)dependencyObject;
@@ -58,6 +65,22 @@ namespace WeatherForecast.App.Control
 			currentWeatherControl.opacityContainer.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
 		}
 
+		private static void CityPhotoImagePropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+		{
+			var currentWeatherControl = (CurrentWeatherControl)dependencyObject;
+			var bitmap = e.NewValue as BitmapImage;
+			if (bitmap == null)
+				return;
+
+			currentWeatherControl.rootContainer.Background = new ImageBrush
+			{
+				ImageSource = bitmap,
+				Stretch = Stretch.UniformToFill
+			};
+
+			currentWeatherControl.opacityContainer.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
+		}
+
 		public CurrentWeatherControl()
 		{
 			this.InitializeComponent();
@@ -71,14 +94,14 @@ namespace WeatherForecast.App.Control
 
 		public string CityPhoto
 		{
-			get
-			{
-				return (string)GetValue(CityPhotoProperty);
-			}
-			set
-			{
-				SetValue(CityPhotoProperty, value);
-			}
+			get { return (string)GetValue(CityPhotoProperty); }
+			set { SetValue(CityPhotoProperty, value); }
+		}
+
+		public BitmapImage CityPhotoImage
+		{
+			get { return (BitmapImage)GetValue(CityPhotoImageProperty); }
+			set { SetValue(CityPhotoImageProperty, value); }
 		}
 
 	}
