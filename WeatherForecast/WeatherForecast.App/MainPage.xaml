@@ -59,7 +59,8 @@
 				</ListView.ItemsPanel>
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<control:DailyForecastControl Width="200"></control:DailyForecastControl>
+						<!--<control:DailyForecastControl Width="200"></control:DailyForecastControl>-->
+						<control:HoursForecastControl></control:HoursForecastControl>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
