@@ -50,5 +50,6 @@
 			</Canvas>
 		</StackPanel>
 		<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
+		<control:DailyForecastControl x:Name="DailyForecastControl" Width="200" Height="200" Margin="0,0,0,50" VerticalAlignment="Bottom"></control:DailyForecastControl>
 	</Grid>
 </Page>

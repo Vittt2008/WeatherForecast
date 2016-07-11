@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
-using WeatherForecast.Logic;
-using WeatherForecast.Logic.Entity.Weather;
 using WeatherForecast.Logic.EntityConverter;
 using WeatherForecast.Logic.ServiceImpl;
 
@@ -34,7 +24,7 @@ namespace WeatherForecast.App
 		private Dictionary<uint, UIElement> myEllipses = new Dictionary<uint, UIElement>();
 		public MainPage()
 		{
-			this.InitializeComponent();
+			InitializeComponent();
 		}
 
 		private async void BtClickOnClick(object sender, RoutedEventArgs e)
@@ -120,36 +110,26 @@ namespace WeatherForecast.App
 			var flickrService = new PhotoService();
 			var weatherTask = weatherService.GetCurrentWeather("Sankt-Peterburg");
 			var flickrTask = flickrService.GetFlickUrlPhoto("Sankt-Peterburg");
-			await Task.WhenAll(weatherTask, flickrTask);
+			var dailyWeatherTask = weatherService.GetDailyForecast("Sankt-Peterburg");
+			await Task.WhenAll(weatherTask, flickrTask, dailyWeatherTask);
 
 			var weatherData = await weatherTask;
 			var cityPhotoUrl = (await flickrTask).RandomPhotoUrl;
 			var cityImage = await flickrService.GetImageFromUrl(cityPhotoUrl);
 			var currentWeatherViewModel = weatherData.ToViewModel();
+			var dailyWeather = await dailyWeatherTask;
 
 			CurrentWeatherControl.DataContext = currentWeatherViewModel;
 			CurrentWeatherControl.CityPhotoImage = cityImage;
+			DailyForecastControl.DataContext = dailyWeather.Times.First().ToViewModel();
+
+			Something();
 		}
 
 		private async void Something()
 		{
 			var service = new WeatherService();
-			var city = new List<string>
-			{
-				"Moscow",
-				"St. Peterburg",
-				"London",
-				"Paris",
-				"New-York",
-				"Barcelona",
-				"Madrid",
-				"Sochi",
-				"Berlin",
-				"Amsterdam"
-			};
-			var tasks = city.Select(x => service.GetHoursForecast(x)).ToArray();
-			var result = await Task.WhenAll(tasks);
-			var symbols = result.SelectMany(x => x.Times).Select(x => x.Symbol.Name).Distinct().OrderBy(x => x).ToList();
+			var tasks = await service.GetDailyForecast("Sankt-Peterburg");
 		}
 	}
 }

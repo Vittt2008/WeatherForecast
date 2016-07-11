@@ -101,6 +101,9 @@
     <Compile Include="Control\CurrentWeatherControl.xaml.cs">
       <DependentUpon>CurrentWeatherControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\DailyForecastControl.xaml.cs">
+      <DependentUpon>DailyForecastControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomTextBox.cs" />
     <Compile Include="DragInCanvasbehavior.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -169,6 +172,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Control\CurrentWeatherControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\DailyForecastControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -34,24 +34,16 @@ namespace WeatherForecast.Logic.ServiceImpl
 
 		public async Task<BitmapImage> GetImageFromUrl(string url)
 		{
-			try
+			var request = WebRequest.Create(url);
+			using (var response = await request.GetResponseAsync())
+			using (var stream = response.GetResponseStream())
+			using (var memoryStream = new MemoryStream())
 			{
-				var request = WebRequest.Create(url);
-				using (var response = await request.GetResponseAsync())
-				using (var stream = response.GetResponseStream())
-				using (var memoryStream = new MemoryStream())
-				{
-					await stream.CopyToAsync(memoryStream);
-					memoryStream.Position = 0;
-					var bitmap = new BitmapImage();
-					await bitmap.SetSourceAsync(memoryStream.AsRandomAccessStream());
-					return bitmap;
-				}
-			}
-			catch (Exception e)
-			{
-				var message = e.Message;
-				return null;
+				await stream.CopyToAsync(memoryStream);
+				memoryStream.Position = 0;
+				var bitmap = new BitmapImage();
+				await bitmap.SetSourceAsync(memoryStream.AsRandomAccessStream());
+				return bitmap;
 			}
 		}
 	}
