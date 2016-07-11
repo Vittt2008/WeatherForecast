@@ -50,6 +50,19 @@
 			</Canvas>
 		</StackPanel>
 		<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
-		<control:DailyForecastControl x:Name="DailyForecastControl" Width="200" Height="200" Margin="0,0,0,50" VerticalAlignment="Bottom"></control:DailyForecastControl>
+		<ScrollViewer HorizontalScrollBarVisibility="Auto" Height="200" VerticalAlignment="Bottom" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled">
+			<ListView x:Name="ListView">
+				<ListView.ItemsPanel>
+					<ItemsPanelTemplate>
+					<StackPanel Orientation="Horizontal"></StackPanel>
+					</ItemsPanelTemplate>
+				</ListView.ItemsPanel>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<control:DailyForecastControl Width="200"></control:DailyForecastControl>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</ScrollViewer>
 	</Grid>
 </Page>

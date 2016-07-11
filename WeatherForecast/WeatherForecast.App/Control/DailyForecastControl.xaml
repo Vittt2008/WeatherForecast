@@ -37,7 +37,7 @@
 			<Image Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
 			<StackPanel Orientation="Horizontal">
 				<TextBlock Text="{Binding Path=TemperatureDay, Converter={StaticResource CelsiusConverter}}" FontSize="20" VerticalAlignment="Bottom"/>
-				<TextBlock Text="{Binding Path=TemperatureNight, Converter={StaticResource CelsiusConverter}}" FontSize="15" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
+				<TextBlock Text="{Binding Path=TemperatureNight, Converter={StaticResource CelsiusConverter}}" FontSize="15" Foreground="LightGray" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
 			</StackPanel>
 			<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextWrapping="Wrap" FontSize="14"/>
 		</StackPanel>

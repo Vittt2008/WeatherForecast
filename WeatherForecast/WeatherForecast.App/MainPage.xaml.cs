@@ -121,7 +121,8 @@ namespace WeatherForecast.App
 
 			CurrentWeatherControl.DataContext = currentWeatherViewModel;
 			CurrentWeatherControl.CityPhotoImage = cityImage;
-			DailyForecastControl.DataContext = dailyWeather.Times.First().ToViewModel();
+			ListView.ItemsSource = dailyWeather.Times.Select(x => x.ToViewModel()).ToList();
+			//DailyForecastControl.DataContext = dailyWeather.Times.First().ToViewModel();
 
 			Something();
 		}
