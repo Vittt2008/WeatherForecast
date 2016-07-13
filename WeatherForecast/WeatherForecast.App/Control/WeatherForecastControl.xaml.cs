@@ -35,6 +35,7 @@ namespace WeatherForecast.App.Control
 			var city = e.NewValue as string;
 			if (string.IsNullOrEmpty(city))
 				return;
+
 			var weatherControl = dependencyObject as WeatherForecastControl;
 			if (weatherControl == null)
 				return;
@@ -60,23 +61,15 @@ namespace WeatherForecast.App.Control
 			var currentWeatherViewModel = weatherData.ToViewModel();
 			var dailyViewModels = dailyWeatherData.Times.Select(x => x.ToDailyViewModel()).ToList();
 			var hoursViewModels = hoursWeatherData.Times.Select(x => x.ToHoursViewModel()).ToList();
-			//var hoursModels = hoursViewModels.GroupBy(x => x.Day).ToList();
 			dailyViewModels.ForEach(x => x.HoursForecasts = hoursViewModels.Where(y => x.Date == y.Date).ToList());
 
 			weatherControl.CurrentWeatherControl.CurrentWeather = currentWeatherViewModel;
 			weatherControl.DailyWeatherList.ItemsSource = dailyViewModels;
-			//weatherControl.HoursWeatherList.ItemsSource = hoursViewModels;
 			weatherControl.Root.Background = new ImageBrush
 			{
 				ImageSource = cityImage,
 				Stretch = Stretch.UniformToFill
 			};
-
-			//CurrentWeatherControl.DataContext = currentWeatherViewModel;
-			//CurrentWeatherControl.CityPhotoImage = cityImage;
-			//ListView.ItemsSource = dailyWeather.Times.Select(x => x.ToDailyViewModel()).ToList();
-			//ListView.ItemsSource = dailyWeather.Times.Select(x => x.ToHoursViewModel()).ToList();
-
 		}
 
 		public WeatherForecastControl()
