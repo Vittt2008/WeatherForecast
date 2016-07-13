@@ -104,33 +104,9 @@ namespace WeatherForecast.App
 			}
 		}
 
-		private async void Page_Loaded(object sender, RoutedEventArgs e)
+		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			var weatherService = new WeatherService();
-			var flickrService = new PhotoService();
-			var weatherTask = weatherService.GetCurrentWeather("Sankt-Peterburg");
-			var flickrTask = flickrService.GetFlickUrlPhoto("Sankt-Peterburg");
-			var dailyWeatherTask = weatherService.GetHoursForecast("Sankt-Peterburg");
-			await Task.WhenAll(weatherTask, flickrTask, dailyWeatherTask);
-
-			var weatherData = await weatherTask;
-			var cityPhotoUrl = (await flickrTask).RandomPhotoUrl;
-			var cityImage = await flickrService.GetImageFromUrl(cityPhotoUrl);
-			var currentWeatherViewModel = weatherData.ToViewModel();
-			var dailyWeather = await dailyWeatherTask;
-
-			CurrentWeatherControl.DataContext = currentWeatherViewModel;
-			CurrentWeatherControl.CityPhotoImage = cityImage;
-			//ListView.ItemsSource = dailyWeather.Times.Select(x => x.ToDailyViewModel()).ToList();
-			ListView.ItemsSource = dailyWeather.Times.Select(x => x.ToHoursViewModel()).ToList();
-
-			Something();
-		}
-
-		private async void Something()
-		{
-			var service = new WeatherService();
-			var tasks = await service.GetHoursForecast("Sankt-Peterburg");
+			WeatherForecastControl.City = "Sankt-Peterburg";
 		}
 	}
 }

@@ -29,56 +29,11 @@ namespace WeatherForecast.App.Control
 				typeof(CurrentWeatherControl),
 				new PropertyMetadata(null, CurrentWeatherPropertyChangedCallback));
 
-		public static readonly DependencyProperty CityPhotoProperty =
-			DependencyProperty.Register(
-				"CityPhoto",
-				typeof(string),
-				typeof(CurrentWeatherControl),
-				new PropertyMetadata(null, CityPhotoPropertyChangedCallback));
-
-		public static readonly DependencyProperty CityPhotoImageProperty =
-			DependencyProperty.Register(
-				"CityPhotoImage",
-				typeof(BitmapImage),
-				typeof(CurrentWeatherControl),
-				new PropertyMetadata(null, CityPhotoImagePropertyChangedCallback));
 
 		private static void CurrentWeatherPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
 		{
 			var currentWeatherControl = (CurrentWeatherControl)dependencyObject;
 			currentWeatherControl.DataContext = (CurrentWeatherViewModel)e.NewValue;
-		}
-
-		private static void CityPhotoPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
-		{
-			var currentWeatherControl = (CurrentWeatherControl)dependencyObject;
-			var url = e.NewValue as string;
-			if (string.IsNullOrEmpty(url))
-				return;
-
-			currentWeatherControl.rootContainer.Background = new ImageBrush
-			{
-				ImageSource = new BitmapImage(new Uri(url)),
-				Stretch = Stretch.UniformToFill
-			};
-
-			currentWeatherControl.opacityContainer.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
-		}
-
-		private static void CityPhotoImagePropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
-		{
-			var currentWeatherControl = (CurrentWeatherControl)dependencyObject;
-			var bitmap = e.NewValue as BitmapImage;
-			if (bitmap == null)
-				return;
-
-			currentWeatherControl.rootContainer.Background = new ImageBrush
-			{
-				ImageSource = bitmap,
-				Stretch = Stretch.UniformToFill
-			};
-
-			currentWeatherControl.opacityContainer.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
 		}
 
 		public CurrentWeatherControl()
@@ -90,18 +45,6 @@ namespace WeatherForecast.App.Control
 		{
 			get { return (CurrentWeatherViewModel)GetValue(CurrentWeatherProperty); }
 			set { SetValue(CurrentWeatherProperty, value); }
-		}
-
-		public string CityPhoto
-		{
-			get { return (string)GetValue(CityPhotoProperty); }
-			set { SetValue(CityPhotoProperty, value); }
-		}
-
-		public BitmapImage CityPhotoImage
-		{
-			get { return (BitmapImage)GetValue(CityPhotoImageProperty); }
-			set { SetValue(CityPhotoImageProperty, value); }
 		}
 
 	}

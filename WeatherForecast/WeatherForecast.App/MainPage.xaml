@@ -49,7 +49,7 @@
 				</TextBlock>
 			</Canvas>
 		</StackPanel>
-		<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
+		<!--<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
 		<ScrollViewer HorizontalScrollBarVisibility="Auto" Height="200" VerticalAlignment="Bottom" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled">
 			<ListView x:Name="ListView">
 				<ListView.ItemsPanel>
@@ -59,11 +59,12 @@
 				</ListView.ItemsPanel>
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<!--<control:DailyForecastControl Width="200"></control:DailyForecastControl>-->
+						--><!--<control:DailyForecastControl Width="200"></control:DailyForecastControl>--><!--
 						<control:HoursForecastControl></control:HoursForecastControl>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-		</ScrollViewer>
+		</ScrollViewer>-->
+		<control:WeatherForecastControl x:Name="WeatherForecastControl"></control:WeatherForecastControl>
 	</Grid>
 </Page>

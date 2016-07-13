@@ -15,6 +15,7 @@ namespace WeatherForecast.Logic.ViewModel
 		public float Pressure { get; set; }
 		public int Humidity { get; set; }
 
+		public DateTime Date => DateFrom.Date;
 		public string Hours => $"{DateFrom.ToString("t")} - {DateTo.ToString("t")}";
 	}
 }

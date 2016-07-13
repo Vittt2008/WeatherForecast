@@ -31,7 +31,7 @@
 		</Style>
 	</UserControl.Resources>
 
-	<Grid Background="Coral">
+	<Grid>
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
 			<TextBlock Text="{Binding Path=Hours}" FontSize="14"/>
 			<Image Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
