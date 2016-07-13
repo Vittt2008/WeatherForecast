@@ -28,7 +28,7 @@ namespace WeatherForecast.Logic.ServiceImpl
 		public async Task<FlickrData> GetFlickUrlPhoto(string city)
 		{
 			var data = await _photoServiceInternal.GetFlickUrlPhoto(city);
-			var flickData = data.Parse<FlickrData>();
+			var flickData = data.DeserializeTo<FlickrData>();
 			return flickData;
 		}
 
