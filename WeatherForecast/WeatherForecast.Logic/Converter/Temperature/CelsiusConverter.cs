@@ -7,7 +7,7 @@ namespace WeatherForecast.Logic.Converter.Temperature
 	{
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			var celciousString = string.Format("{0:##.##}°C", value);
+			var celciousString = string.Format("{0:##}°C", value);
 			return celciousString;
 		}
 
