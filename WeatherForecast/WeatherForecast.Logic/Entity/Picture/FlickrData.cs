@@ -13,6 +13,6 @@ namespace WeatherForecast.Logic.Entity.Picture
 		[XmlArrayItem("photo")]
 		public List<Photo> Photos { get; set; }
 
-		public string RandomPhotoUrl => Photos.Count == 0 ? string.Empty : Photos[Random.Next(Photos.Count)].PhotoUrl;
+		public string RandomPhotoUrl => Photos[Random.Next(Photos.Count)].PhotoUrl;
 	}
 }

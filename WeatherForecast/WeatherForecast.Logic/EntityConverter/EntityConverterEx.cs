@@ -1,5 +1,4 @@
-﻿using WeatherForecast.Logic.Entity.Forecast;
-using WeatherForecast.Logic.Entity.Weather;
+﻿using WeatherForecast.Logic.Entity.Weather;
 using WeatherForecast.Logic.ViewModel;
 
 namespace WeatherForecast.Logic.EntityConverter
@@ -23,39 +22,6 @@ namespace WeatherForecast.Logic.EntityConverter
 					DirectionName = currentWeather.Wind.Direction.Name,
 					DirectionValue = currentWeather.Wind.Direction.Value
 				}
-			};
-			return viewModel;
-		}
-
-		public static DailyForecastViewModel ToDailyViewModel(this Time time)
-		{
-			var viewModel = new DailyForecastViewModel
-			{
-				Weather = time.Symbol.Name,
-				Date = time.Day,
-				TemperatureDay = time.Temperature.Day,
-				TemperatureNight = time.Temperature.Night
-			};
-			return viewModel;
-		}
-
-		public static HoursForecastViewModel ToHoursViewModel(this Time time)
-		{
-			var viewModel = new HoursForecastViewModel()
-			{
-				Weather = time.Symbol.Name,
-				DateFrom = time.HoursTime.LocalFrom,
-				DateTo = time.HoursTime.LocalTo,
-				Temperature = time.Temperature.Value,
-				Wind = new WindViewModel
-				{
-					Name = time.WindSpeed.Name,
-					Value = time.WindSpeed.Mps,
-					DirectionName = time.WindDirection.Name,
-					DirectionValue = time.WindDirection.Deg
-				},
-				Pressure = time.Pressure.Value,
-				Humidity = time.Humidity.Value
 			};
 			return viewModel;
 		}

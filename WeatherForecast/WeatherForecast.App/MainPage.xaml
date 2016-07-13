@@ -49,23 +49,6 @@
 				</TextBlock>
 			</Canvas>
 		</StackPanel>
-		<!--<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
-		<ScrollViewer HorizontalScrollBarVisibility="Auto" Height="200" VerticalAlignment="Bottom" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled">
-			<ListView x:Name="ListView">
-				<ListView.ItemsPanel>
-					<ItemsPanelTemplate>
-					<StackPanel Orientation="Horizontal"></StackPanel>
-					</ItemsPanelTemplate>
-				</ListView.ItemsPanel>
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						--><!--<control:DailyForecastControl Width="200"></control:DailyForecastControl>--><!--
-						<control:HoursForecastControl></control:HoursForecastControl>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
-		</ScrollViewer>-->
-		<control:WeatherForecastControl x:Name="WeatherForecastControl" City="{Binding ElementName=TbCityname, Path=Text}"></control:WeatherForecastControl>
-		<TextBox x:Name="TbCityname" HorizontalAlignment="Left" Margin="10,30,10,10" TextWrapping="Wrap" VerticalAlignment="Top" Text="Sankt-Peterburg" Width="200"/>
+		<control:CurrentWeatherControl x:Name="CurrentWeatherControl"/>
 	</Grid>
 </Page>
