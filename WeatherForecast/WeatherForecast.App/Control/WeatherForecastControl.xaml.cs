@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using WeatherForecast.Logic.EntityConverter;
 using WeatherForecast.Logic.ServiceImpl;
@@ -52,7 +53,9 @@ namespace WeatherForecast.App.Control
 			var dailyWeatherData = await dailyWeatherTask;
 			var hoursWeatherData = await hoursWeatherTask;
 			var cityPhotoUrl = (await flickrPhotoTask).RandomPhotoUrl;
-			var cityImage = await flickrService.GetImageFromUrl(cityPhotoUrl);
+			var cityImage = !string.IsNullOrEmpty(cityPhotoUrl)
+				? await flickrService.GetImageFromUrl(cityPhotoUrl)
+				: new BitmapImage(new Uri("ms-appx:///Assets/city_photo.jpg"));
 
 			var currentWeatherViewModel = weatherData.ToViewModel();
 			var dailyViewModels = dailyWeatherData.Times.Select(x => x.ToDailyViewModel()).ToList();

@@ -106,7 +106,7 @@ namespace WeatherForecast.App
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			WeatherForecastControl.City = "Sankt-Peterburg";
+			//WeatherForecastControl.City = "Sankt-Peterburg";
 		}
 	}
 }
