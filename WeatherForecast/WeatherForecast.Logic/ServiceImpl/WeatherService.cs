@@ -25,21 +25,21 @@ namespace WeatherForecast.Logic.ServiceImpl
 		public async Task<WeatherData> GetDailyForecast(string city)
 		{
 			var data = await _weatherService.GetDailyForecast(city);
-			var weatherData = data.DeserializeTo<WeatherData>();
+			var weatherData = data.Parse<WeatherData>();
 			return weatherData;
 		}
 
 		public async Task<WeatherData> GetHoursForecast(string city)
 		{
 			var data = await _weatherService.GetHoursForecast(city);
-			var weatherData = data.DeserializeTo<WeatherData>();
+			var weatherData = data.Parse<WeatherData>();
 			return weatherData;
 		}
 
 		public async Task<CurrentWeather> GetCurrentWeather(string city)
 		{
 			var data = await _weatherService.GetCurrentWeather(city);
-			var weatherData = data.DeserializeTo<CurrentWeather>();
+			var weatherData = data.Parse<CurrentWeather>();
 			return weatherData;
 		}
 	}
