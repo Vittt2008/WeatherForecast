@@ -16,7 +16,7 @@ namespace WeatherForecast.Logic
 			}
 		}
 
-		public static T Parse<T>(this string xml)
+		public static T DeserializeTo<T>(this string xml)
 		{
 			var serializer = new XmlSerializer(typeof(T));
 			using (var stringReader = new StringReader(xml))

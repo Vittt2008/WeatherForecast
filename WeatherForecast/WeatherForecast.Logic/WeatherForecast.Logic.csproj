@@ -154,6 +154,8 @@
     <Compile Include="Service\IWeatherService.cs" />
     <Compile Include="Service\IWeatherServiceInternal.cs" />
     <Compile Include="ViewModel\CurrentWeatherViewModel.cs" />
+    <Compile Include="ViewModel\DailyForecastViewModel.cs" />
+    <Compile Include="ViewModel\HoursForecastViewModel.cs" />
     <Compile Include="ViewModel\WindViewModel.cs" />
     <EmbeddedResource Include="Properties\WeatherForecast.Logic.rd.xml" />
   </ItemGroup>
