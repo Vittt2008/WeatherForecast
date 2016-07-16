@@ -21,8 +21,8 @@
 
 	<Grid>
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
-			<TextBlock Text="{Binding Path=Hours}" FontSize="14"/>
-			<Image Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
+			<TextBlock Text="{Binding Hours}" FontSize="14"/>
+			<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
 			<TextBlock Text="{Binding Temperature}" FontSize="20" VerticalAlignment="Bottom"/>
 
 			<TextBlock Text="{Binding Pressure}" TextAlignment="Left"></TextBlock>

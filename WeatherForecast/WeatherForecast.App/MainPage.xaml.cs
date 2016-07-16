@@ -21,87 +21,9 @@ namespace WeatherForecast.App
 	/// </summary>
 	public sealed partial class MainPage : Page
 	{
-		private Dictionary<uint, UIElement> myEllipses = new Dictionary<uint, UIElement>();
 		public MainPage()
 		{
 			InitializeComponent();
-		}
-
-		private async void BtClickOnClick(object sender, RoutedEventArgs e)
-		{
-			var res1 = AnalyticsInfo.DeviceForm;
-			var res2 = AnalyticsInfo.VersionInfo.DeviceFamily;
-			try
-			{
-				var service = new WeatherService();
-				var data = await service.GetCurrentWeather("Moscow");
-			}
-			catch (Exception exception)
-			{
-				var message = exception.Message;
-			}
-		}
-
-		private void Cnv_OnPointerPressed(object sender, PointerRoutedEventArgs e)
-		{
-			// Создаем новый овал 
-			try
-			{
-				Ellipse ellipse = new Ellipse();
-				ellipse.Width = 30;
-				ellipse.Height = 30;
-				ellipse.Stroke = new SolidColorBrush(Colors.White);
-				ellipse.Fill = new SolidColorBrush(Colors.Gold);
-
-				// Помещаем овал в точку касания
-				var tp = e.GetCurrentPoint(cnv);
-				Canvas.SetTop(ellipse, tp.Position.Y);
-				Canvas.SetLeft(ellipse, tp.Position.X);
-
-				// Сохраняем овал в словаре
-				myEllipses[e.Pointer.PointerId] = ellipse;
-
-				// Отражаем овал в канве
-				cnv.Children.Add(ellipse);
-			}
-			catch (Exception exception)
-			{
-				var message = exception.Message;
-			}
-		}
-
-		private void Cnv_OnPointerReleased(object sender, PointerRoutedEventArgs e)
-		{
-			try
-			{
-				UIElement el = myEllipses[e.Pointer.PointerId];
-				cnv.Children.Remove(el);
-				myEllipses.Remove(e.Pointer.PointerId);
-			}
-			catch (Exception exception)
-			{
-				var message = exception.Message;
-			}
-		}
-
-		private void Cnv_OnPointerMoved(object sender, PointerRoutedEventArgs e)
-		{
-			try
-			{
-				if (!myEllipses.ContainsKey(e.Pointer.PointerId))
-					return;
-
-				UIElement ellipse = myEllipses[e.Pointer.PointerId];
-
-				// Перемещаем овал в новую точку
-				var tp = e.GetCurrentPoint(cnv);
-				Canvas.SetTop(ellipse, tp.Position.Y);
-				Canvas.SetLeft(ellipse, tp.Position.X);
-			}
-			catch (Exception exception)
-			{
-				var message = exception.Message;
-			}
 		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)

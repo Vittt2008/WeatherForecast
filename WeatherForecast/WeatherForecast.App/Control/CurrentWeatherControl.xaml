@@ -9,9 +9,7 @@
 	xmlns:converter="using:WeatherForecast.Logic.Converter"
 	xmlns:pressure="using:WeatherForecast.Logic.Converter.Pressure"
 	xmlns:speed="using:WeatherForecast.Logic.Converter.Speed"
-	mc:Ignorable="d"
-	d:DataContext="{d:DesignData CurrentWeatherViewModel}"
-	x:Name="currentWeather">
+	mc:Ignorable="d">
 
 	<UserControl.Resources>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
@@ -26,8 +24,7 @@
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 			<TextBlock Text="{Binding Path=City}" TextAlignment="Center" FontSize="22"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Image Height="80" Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
-				<!--<Image Source="../Assets/Weather/sunny.png" VerticalAlignment="Center" Margin="10,0,10,0" Height="80"></Image>-->
+				<Image Height="80" Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
 				<TextBlock Text="{Binding Temperature}" FontSize="44" VerticalAlignment="Center"></TextBlock>
 			</StackPanel>
 			<TextBlock Text="{Binding Weather}" TextAlignment="Center" FontSize="22"/>
@@ -47,7 +44,7 @@
 					<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Pressure}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 
 					<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Wind.Name}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
-					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Wind.WindValue}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Wind.ShortInfo}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 				</Grid>
 			</StackPanel>
 		</StackPanel>

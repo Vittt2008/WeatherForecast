@@ -94,39 +94,5 @@
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<control:WeatherForecastControl x:Name="WeatherForecastControl" City="{Binding ElementName=TbCityname, Path=Text}"></control:WeatherForecastControl>
 		<TextBox x:Name="TbCityname" HorizontalAlignment="Left" Margin="10,30,10,10" TextWrapping="Wrap" VerticalAlignment="Top" Text="Sankt-Peterburg" Width="200"/>
-		<StackPanel Orientation="Vertical" Visibility="Collapsed" Background="Azure">
-			<Canvas x:Name="cnv" Background="LightBlue" Height="0" PointerPressed="Cnv_OnPointerPressed" PointerReleased="Cnv_OnPointerReleased" PointerMoved="Cnv_OnPointerMoved">
-				<Button x:Name="canvasButton" Content="Canvas Button" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="212" Canvas.Top="128"></Button>
-			</Canvas>
-			<TextBlock Margin="5" Text="Какой-то текст" FontSize="{Binding ElementName=sld, Path=Value}" Padding="0,40,0,0"></TextBlock>
-			<Button x:Name="btClick" Content="CLICK" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtClickOnClick" />
-			<Slider Margin="5" Minimum="1" Maximum="72" Value="12" x:Name="sld" TickFrequency="5" TickPlacement="BottomRight"  Template="{StaticResource sliderTemplate}"></Slider>
-
-			<TextBox x:Name="tb1" Text="{Binding ElementName=ctb2, Path=CustomText, Mode=TwoWay}"></TextBox>
-			<local:CustomTextBox x:Name="ctb2" Text="{Binding ElementName=ctb2, Path=CustomText, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CustomText="{Binding ElementName=tb1, Path=Text, Mode=TwoWay}"/>
-			<Button x:Name="bt1" Content="Click Me" HorizontalAlignment="Center"></Button>
-			<Canvas x:Name="Canvas" Background="Coral" Opacity="1" Height="400">
-				<TextBlock x:Name="Button1" Text="CLICK ME 1" Canvas.Left="406" Canvas.Top="146" Padding="10">
-				<interactivity:Interaction.Behaviors>
-					<local:DragInCanvasbehavior></local:DragInCanvasbehavior>
-				</interactivity:Interaction.Behaviors>
-				</TextBlock>
-				<TextBlock x:Name="Button2" Text="CLICK ME 2" Canvas.Left="306" Canvas.Top="146" Padding="10">
-				<interactivity:Interaction.Behaviors>
-					<local:DragInCanvasbehavior></local:DragInCanvasbehavior>
-				</interactivity:Interaction.Behaviors>
-				</TextBlock>
-				<TextBlock x:Name="Button3" Text="CLICK ME 3" Canvas.Left="206" Canvas.Top="146" Padding="10">
-				<interactivity:Interaction.Behaviors>
-					<local:DragInCanvasbehavior></local:DragInCanvasbehavior>
-				</interactivity:Interaction.Behaviors>
-				</TextBlock>
-				<TextBlock x:Name="Button4" Text="CLICK ME 4" Canvas.Left="106" Canvas.Top="146" Padding="10">
-				<interactivity:Interaction.Behaviors>
-					<local:DragInCanvasbehavior></local:DragInCanvasbehavior>
-				</interactivity:Interaction.Behaviors>
-				</TextBlock>
-			</Canvas>
-		</StackPanel>
 	</Grid>
 </Page>

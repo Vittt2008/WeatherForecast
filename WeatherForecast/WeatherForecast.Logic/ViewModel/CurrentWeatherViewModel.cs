@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using WeatherForecast.Logic.Annotations;
 using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class CurrentWeatherViewModel
+	public class CurrentWeatherViewModel:INotifyPropertyChanged
 	{
 		private readonly float _temperature;
 		private readonly DateTime _lastUpdate;
@@ -25,9 +28,20 @@ namespace WeatherForecast.Logic.ViewModel
 			get { return _unit; }
 			set
 			{
+				if (_unit == value)
+					return;
+
 				_unit = value;
-				if (Wind != null)
-					Wind.Unit = value;
+
+				OnPropertyChanged(nameof(Unit));
+				OnPropertyChanged(nameof(Temperature));
+				OnPropertyChanged(nameof(Pressure));
+				
+				if (Wind == null)
+					return;
+
+				Wind.Unit = value;
+				OnPropertyChanged(nameof(Wind));
 			}
 		}
 
@@ -40,6 +54,14 @@ namespace WeatherForecast.Logic.ViewModel
 			City = city;
 			_weather = weather;
 			Wind = wind;
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		[NotifyPropertyChangedInvocator]
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

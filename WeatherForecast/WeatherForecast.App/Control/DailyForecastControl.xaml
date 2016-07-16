@@ -21,8 +21,8 @@
 	
 	<Grid>
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
-			<TextBlock Text="{Binding Path=Day}" FontSize="14"/>
-			<Image Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
+			<TextBlock Text="{Binding Day}" FontSize="14"/>
+			<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
 			<StackPanel Orientation="Horizontal">
 				<TextBlock Text="{Binding TemperatureDay}" FontSize="20" VerticalAlignment="Bottom"/>
 				<TextBlock Text="{Binding TemperatureNight}" FontSize="15" Foreground="LightGray" VerticalAlignment="Bottom" Margin="5,0,0,0"/>

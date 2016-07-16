@@ -15,13 +15,11 @@ namespace WeatherForecast.Logic.EntityConverter
 				currentWeather.Pressure.Value,
 				currentWeather.City.ToString(),
 				currentWeather.Weather.Value,
-				new WindViewModel
-				{
-					Name = currentWeather.Wind.Speed.Name,
-					Value = currentWeather.Wind.Speed.Value,
-					DirectionName = currentWeather.Wind.Direction.Name,
-					DirectionValue = currentWeather.Wind.Direction.Value
-				});
+				new WindViewModel(
+					currentWeather.Wind.Speed.Name,
+					currentWeather.Wind.Speed.Value,
+					currentWeather.Wind.Direction.Name,
+					currentWeather.Wind.Direction.Value));
 			return viewModel;
 		}
 
@@ -39,13 +37,11 @@ namespace WeatherForecast.Logic.EntityConverter
 		{
 			var viewModel = new HoursForecastViewModel(
 				time.Temperature.Value,
-				new WindViewModel
-				{
-					Name = time.WindSpeed.Name,
-					Value = time.WindSpeed.Mps,
-					DirectionName = time.WindDirection.Name,
-					DirectionValue = time.WindDirection.Deg
-				},
+				new WindViewModel(
+					time.WindSpeed.Name,
+					time.WindSpeed.Mps,
+					time.WindDirection.Name,
+					time.WindDirection.Deg),
 				time.Pressure.Value,
 				time.Humidity.Value,
 				time.Symbol.Name,
