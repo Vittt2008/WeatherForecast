@@ -26,9 +26,10 @@ namespace WeatherForecast.App
 			InitializeComponent();
 		}
 
-		private void Page_Loaded(object sender, RoutedEventArgs e)
+		private async void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			//WeatherForecastControl.City = "Sankt-Peterburg";
+			var weatherViewModel = await new InformationService().GetWeather("Moscow");
+			WeatherForecastControl.WeatherViewModel = weatherViewModel;
 		}
 	}
 }

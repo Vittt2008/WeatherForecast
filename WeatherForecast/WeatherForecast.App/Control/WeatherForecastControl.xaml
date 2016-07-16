@@ -5,16 +5,18 @@
 	xmlns:local="using:WeatherForecast.App.Control"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d">
+	mc:Ignorable="d"
+	x:Name="WeatherControl">
 
 	<Grid x:Name="Root">
 		<Grid.Background>
-			<ImageBrush ImageSource="../Assets/city_photo.jpg" Stretch="UniformToFill"></ImageBrush>
+			<!--<ImageBrush ImageSource="../Assets/city_photo.jpg" Stretch="UniformToFill"></ImageBrush>-->
+			<ImageBrush ImageSource="{Binding ElementName=WeatherControl, Path=WeatherViewModel.CityPhoto}" Stretch="UniformToFill"></ImageBrush>
 		</Grid.Background>
 		<StackPanel x:Name="OpacityContainer" Background="Black" Opacity="0.5"/>
 		<StackPanel Margin="0,20">
-			<local:CurrentWeatherControl x:Name="CurrentWeatherControl" Height="auto"></local:CurrentWeatherControl>
-			<ListView x:Name="DailyWeatherList" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
+			<local:CurrentWeatherControl Height="auto" DataContext="{Binding ElementName=WeatherControl, Path=WeatherViewModel.CurrentWeather}"></local:CurrentWeatherControl>
+			<ListView x:Name="DailyWeatherList" ItemsSource="{Binding ElementName=WeatherControl, Path=WeatherViewModel.DailyWeather}" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
 				<ListView.ItemsPanel>
 					<ItemsPanelTemplate>
 						<StackPanel Orientation="Horizontal" />

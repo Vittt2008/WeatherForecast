@@ -22,30 +22,9 @@ namespace WeatherForecast.App.Control
 {
 	public sealed partial class CurrentWeatherControl : UserControl
 	{
-		public static readonly DependencyProperty CurrentWeatherProperty =
-			DependencyProperty.Register(
-				"CurrentWeather",
-				typeof(CurrentWeatherViewModel),
-				typeof(CurrentWeatherControl),
-				new PropertyMetadata(null, CurrentWeatherPropertyChangedCallback));
-
-
-		private static void CurrentWeatherPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
-		{
-			var currentWeatherControl = (CurrentWeatherControl)dependencyObject;
-			currentWeatherControl.DataContext = (CurrentWeatherViewModel)e.NewValue;
-		}
-
 		public CurrentWeatherControl()
 		{
 			this.InitializeComponent();
 		}
-
-		public CurrentWeatherViewModel CurrentWeather
-		{
-			get { return (CurrentWeatherViewModel)GetValue(CurrentWeatherProperty); }
-			set { SetValue(CurrentWeatherProperty, value); }
-		}
-
 	}
 }

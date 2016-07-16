@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using WeatherForecast.Logic.EntityConverter;
 using WeatherForecast.Logic.ServiceImpl;
+using WeatherForecast.Logic.ViewModel;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -23,64 +24,36 @@ namespace WeatherForecast.App.Control
 {
 	public sealed partial class WeatherForecastControl : UserControl
 	{
-		public static readonly DependencyProperty CityProperty =
+		public static readonly DependencyProperty WeatherViewModelProperty =
 			DependencyProperty.Register(
-				"City",
-				typeof(string),
+				"WeatherViewModel",
+				typeof(WeatherForecastViewModel),
 				typeof(WeatherForecastControl),
-				new PropertyMetadata(null, CityPropertyChangedCallback));
+				new PropertyMetadata(null, WeatherViewModelPropertyChangedCallback));
 
-		private static async void CityPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+		private static void WeatherViewModelPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
 		{
-			var city = e.NewValue as string;
-			if (string.IsNullOrEmpty(city))
+			var viewModel = e.NewValue as WeatherForecastViewModel;
+			if (viewModel == null)
 				return;
 
 			var weatherControl = dependencyObject as WeatherForecastControl;
 			if (weatherControl == null)
 				return;
 
-			var weatherService = new WeatherService();
-			var flickrService = new PhotoService();
-
-			var currentWeatherTask = weatherService.GetCurrentWeather(city);
-			var dailyWeatherTask = weatherService.GetDailyForecast(city);
-			var hoursWeatherTask = weatherService.GetHoursForecast(city);
-			var flickrPhotoTask = flickrService.GetFlickUrlPhoto(city);
-
-			await Task.WhenAll(currentWeatherTask, dailyWeatherTask, hoursWeatherTask, flickrPhotoTask);
-
-			var weatherData = await currentWeatherTask;
-			var dailyWeatherData = await dailyWeatherTask;
-			var hoursWeatherData = await hoursWeatherTask;
-			var cityPhotoUrl = (await flickrPhotoTask).RandomPhotoUrl;
-			var cityImage = !string.IsNullOrEmpty(cityPhotoUrl)
-				? await flickrService.GetImageFromUrl(cityPhotoUrl)
-				: new BitmapImage(new Uri("ms-appx:///Assets/city_photo.jpg"));
-
-			var currentWeatherViewModel = weatherData.ToViewModel();
-			var dailyViewModels = dailyWeatherData.Times.Select(x => x.ToDailyViewModel()).ToList();
-			var hoursViewModels = hoursWeatherData.Times.Select(x => x.ToHoursViewModel()).ToList();
-			dailyViewModels.ForEach(x => x.HoursForecasts = hoursViewModels.Where(y => x.Date == y.Date).ToList());
-
-			weatherControl.CurrentWeatherControl.CurrentWeather = currentWeatherViewModel;
-			weatherControl.DailyWeatherList.ItemsSource = dailyViewModels;
-			weatherControl.Root.Background = new ImageBrush
-			{
-				ImageSource = cityImage,
-				Stretch = Stretch.UniformToFill
-			};
+			weatherControl.DataContext = viewModel;
 		}
+
 
 		public WeatherForecastControl()
 		{
 			this.InitializeComponent();
 		}
 
-		public string City
+		public WeatherForecastViewModel WeatherViewModel
 		{
-			get { return (string)GetValue(CityProperty); }
-			set { SetValue(CityProperty, value); }
+			get { return (WeatherForecastViewModel)GetValue(WeatherViewModelProperty); }
+			set { SetValue(WeatherViewModelProperty, value); }
 		}
 	}
 }

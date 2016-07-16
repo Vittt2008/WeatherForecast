@@ -86,13 +86,14 @@
 				</Grid>
 			</Grid>
 		</ControlTemplate>
-		
-		
+
+
 
 	</Page.Resources>
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<control:WeatherForecastControl x:Name="WeatherForecastControl" City="{Binding ElementName=TbCityname, Path=Text}"></control:WeatherForecastControl>
-		<TextBox x:Name="TbCityname" HorizontalAlignment="Left" Margin="10,30,10,10" TextWrapping="Wrap" VerticalAlignment="Top" Text="Sankt-Peterburg" Width="200"/>
+		<control:WeatherForecastControl x:Name="WeatherForecastControl"/>
+		<!--<control:WeatherForecastControl x:Name="WeatherForecastControl" City="{Binding ElementName=TbCityname, Path=Text}"></control:WeatherForecastControl>-->
+		<!--<TextBox x:Name="TbCityname" HorizontalAlignment="Left" Margin="10,30,10,10" TextWrapping="Wrap" VerticalAlignment="Top" Text="Sankt-Peterburg" Width="200"/>-->
 	</Grid>
 </Page>
