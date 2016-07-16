@@ -14,34 +14,30 @@
 		<StackPanel x:Name="OpacityContainer" Background="Black" Opacity="0.5"/>
 		<StackPanel Margin="0,20">
 			<local:CurrentWeatherControl x:Name="CurrentWeatherControl" Height="auto"></local:CurrentWeatherControl>
-			<ScrollViewer HorizontalScrollBarVisibility="Auto" Height="auto" VerticalAlignment="Bottom" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled" HorizontalAlignment="Center">
-				<ListView x:Name="DailyWeatherList">
-					<ListView.ItemsPanel>
-						<ItemsPanelTemplate>
-							<StackPanel Orientation="Horizontal"></StackPanel>
-						</ItemsPanelTemplate>
-					</ListView.ItemsPanel>
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<local:DailyForecastControl></local:DailyForecastControl>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-				</ListView>
-			</ScrollViewer>
-			<ScrollViewer HorizontalScrollBarVisibility="Auto" Height="auto" VerticalAlignment="Bottom" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled" HorizontalAlignment="Center">
-				<ListView x:Name="HoursWeatherList" ItemsSource="{Binding ElementName=DailyWeatherList, Path=SelectedValue.HoursForecasts}">
-					<ListView.ItemsPanel>
-						<ItemsPanelTemplate>
-							<StackPanel Orientation="Horizontal"></StackPanel>
-						</ItemsPanelTemplate>
-					</ListView.ItemsPanel>
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<local:HoursForecastControl></local:HoursForecastControl>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-				</ListView>
-			</ScrollViewer>
+			<ListView x:Name="DailyWeatherList" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
+				<ListView.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Horizontal" />
+					</ItemsPanelTemplate>
+				</ListView.ItemsPanel>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<local:DailyForecastControl></local:DailyForecastControl>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<ListView x:Name="HoursWeatherList" ItemsSource="{Binding ElementName=DailyWeatherList, Path=SelectedValue.HoursForecasts}" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
+				<ListView.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Horizontal" />
+					</ItemsPanelTemplate>
+				</ListView.ItemsPanel>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<local:HoursForecastControl></local:HoursForecastControl>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
 		</StackPanel>
 	</Grid>
 </UserControl>

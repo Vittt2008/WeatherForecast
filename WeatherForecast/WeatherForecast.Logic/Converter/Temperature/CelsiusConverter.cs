@@ -20,5 +20,11 @@ namespace WeatherForecast.Logic.Converter.Temperature
 			var celcious = float.Parse(celciousString);
 			return celcious;
 		}
+
+		public static string Convert(float temperature)
+		{
+			var celciousString = string.Format("{0:##}°C", temperature);
+			return celciousString;
+		}
 	}
 }

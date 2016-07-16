@@ -15,5 +15,10 @@ namespace WeatherForecast.Logic.Converter
 		{
 			return null;
 		}
+
+		public static string Convert(int humidity)
+		{
+			return string.Format("Humidity {0}%", humidity);
+		}
 	}
 }

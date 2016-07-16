@@ -13,18 +13,7 @@
 
 	<UserControl.Resources>
 		<converter:CapitalizeConverter x:Key="CapitalizeConverter"></converter:CapitalizeConverter>
-		<converter:LastUpdateConverter x:Key="LastUpdateConverter"></converter:LastUpdateConverter>
-		<converter:HumidityConverter x:Key="HumidityConverter"></converter:HumidityConverter>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
-
-		<temperature:CelsiusConverter x:Key="CelsiusConverter"></temperature:CelsiusConverter>
-		<temperature:FahrenheitConverter x:Key="FahrenheitConverter"></temperature:FahrenheitConverter>
-
-		<pressure:MmHgConverter x:Key="MmHgConverter"></pressure:MmHgConverter>
-		<pressure:InHgConverter x:Key="InHgConverter"></pressure:InHgConverter>
-
-		<speed:MetresPerSecondConverter x:Key="MetresPerSecondConverter"></speed:MetresPerSecondConverter>
-		<speed:MilesPerHourConverter x:Key="MilesPerHourConverter"></speed:MilesPerHourConverter>
 
 		<Style TargetType="TextBlock">
 			<Setter Property="TextBlock.Foreground" Value="White"></Setter>
@@ -35,18 +24,17 @@
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
 			<TextBlock Text="{Binding Path=Hours}" FontSize="14"/>
 			<Image Source="{Binding Path=Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
-			<TextBlock Text="{Binding Path=Temperature, Converter={StaticResource CelsiusConverter}}" FontSize="20" VerticalAlignment="Bottom"/>
+			<TextBlock Text="{Binding Temperature}" FontSize="20" VerticalAlignment="Bottom"/>
 
-			<TextBlock Text="{Binding Path=Pressure, Converter={StaticResource MmHgConverter}}" TextAlignment="Left"></TextBlock>
-			
+			<TextBlock Text="{Binding Pressure}" TextAlignment="Left"></TextBlock>
+
 			<StackPanel Orientation="Horizontal">
 				<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextWrapping="Wrap" FontSize="14"/>
-				<TextBlock Text="{Binding Path=Humidity, Converter={StaticResource HumidityConverter}}" TextAlignment="Left" FontSize="14" Margin="5,0,0,0"></TextBlock>
+				<TextBlock Text="{Binding Humidity}" TextAlignment="Left" FontSize="14" Margin="5,0,0,0"></TextBlock>
 			</StackPanel>
 
 			<StackPanel Orientation="Horizontal">
-				<TextBlock Text="{Binding Path=Wind.Name, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Left" Margin="0"/>
-				<TextBlock Text="{Binding Path=Wind, Converter={StaticResource MetresPerSecondConverter}}" TextAlignment="Left" Margin="5,0,0,0"/>
+				<TextBlock Text="{Binding Wind}" TextAlignment="Left"/>
 			</StackPanel>
 		</StackPanel>
 	</Grid>

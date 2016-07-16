@@ -15,5 +15,10 @@ namespace WeatherForecast.Logic.Converter
 		{
 			return null;
 		}
+
+		public static string Convert(DateTime dateTime)
+		{
+			return string.Format("Last update: {0}", dateTime.ToString("HH:mm:ss dd.MM.yyyy"));
+		}
 	}
 }

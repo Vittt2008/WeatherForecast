@@ -16,6 +16,7 @@ namespace WeatherForecast.Logic.Converter.Temperature
 			return fahrenheitString;
 		}
 
+
 		public object ConvertBack(object value, Type targetType, object parameter, string language)
 		{
 			var fahrenheitString = value as string;
@@ -25,6 +26,13 @@ namespace WeatherForecast.Logic.Converter.Temperature
 			var fahrenheit = float.Parse(fahrenheitString);
 			var celcious = (fahrenheit - FahrenheitOffset) / FahrenheitFactor;
 			return celcious;
+		}
+
+		public static string Convert(float temperature)
+		{
+			var fahrenheit = temperature * FahrenheitFactor + FahrenheitOffset;
+			var fahrenheitString = string.Format("{0:##.##}°F", fahrenheit);
+			return fahrenheitString;
 		}
 	}
 }

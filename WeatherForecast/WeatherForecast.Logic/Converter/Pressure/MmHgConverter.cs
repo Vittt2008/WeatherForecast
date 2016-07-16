@@ -25,5 +25,12 @@ namespace WeatherForecast.Logic.Converter.Pressure
 			var hPa = mmHg / HPaToMmHgFactor;
 			return hPa;
 		}
+
+		public static string Convert(float hPa)
+		{
+			var mmHg = hPa * HPaToMmHgFactor;
+			var mmHgString = string.Format("Pressure {0:###} mm Hg", mmHg);
+			return mmHgString;
+		}
 	}
 }
