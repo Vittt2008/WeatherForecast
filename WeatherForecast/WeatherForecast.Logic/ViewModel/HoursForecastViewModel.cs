@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using WeatherForecast.Logic.Converter;
-using WeatherForecast.Logic.Converter.Pressure;
-using WeatherForecast.Logic.Converter.Temperature;
 
 namespace WeatherForecast.Logic.ViewModel
 {
@@ -15,14 +13,15 @@ namespace WeatherForecast.Logic.ViewModel
 		private readonly WindViewModel _wind;
 		private readonly float _pressure;
 		private readonly int _humidity;
-		
-		public string Weather { get; }
+		private readonly string _weather;
+
+		public string Weather => WeatherFormatter.Capitalize(_weather);
 		public DateTime DateFrom { get; }
 		public DateTime DateTo { get; }
-		public string Temperature =>Unit == Unit.Metric? CelsiusConverter.Convert(_temperature) : FahrenheitConverter.Convert(_temperature);
+		public string Temperature => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperature) : WeatherFormatter.CelciousToFahrenheit(_temperature);
 		public string Wind => _wind.ToString();
-		public string Pressure => Unit == Unit.Metric ? MmHgConverter.Convert(_pressure) : InHgConverter.Convert(_pressure);
-		public string Humidity => HumidityConverter.Convert(_humidity);
+		public string Pressure => Unit == Unit.Metric ? WeatherFormatter.HPaToMmHg(_pressure) : WeatherFormatter.HPaToInHg(_pressure);
+		public string Humidity => WeatherFormatter.FormatHumidity(_humidity);
 
 		public Unit Unit
 		{
@@ -44,7 +43,7 @@ namespace WeatherForecast.Logic.ViewModel
 			_wind = wind;
 			_pressure = pressure;
 			_humidity = humidity;
-			Weather = weather;
+			_weather = weather;
 			DateFrom = dateFrom;
 			DateTo = dateTo;
 		}

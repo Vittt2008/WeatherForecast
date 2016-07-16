@@ -14,7 +14,6 @@
 	x:Name="currentWeather">
 
 	<UserControl.Resources>
-		<converter:CapitalizeConverter x:Key="CapitalizeConverter"></converter:CapitalizeConverter>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
 
 		<Style TargetType="TextBlock">
@@ -31,8 +30,8 @@
 				<!--<Image Source="../Assets/Weather/sunny.png" VerticalAlignment="Center" Margin="10,0,10,0" Height="80"></Image>-->
 				<TextBlock Text="{Binding Temperature}" FontSize="44" VerticalAlignment="Center"></TextBlock>
 			</StackPanel>
-			<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Center" FontSize="22"/>
-			<TextBlock Text="{Binding Path=LastUpdate}" TextAlignment="Center"></TextBlock>
+			<TextBlock Text="{Binding Weather}" TextAlignment="Center" FontSize="22"/>
+			<TextBlock Text="{Binding LastUpdate}" TextAlignment="Center"></TextBlock>
 			<StackPanel HorizontalAlignment="Center">
 				<Grid>
 					<Grid.RowDefinitions>
@@ -47,7 +46,7 @@
 					<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Humidity}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
 					<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Pressure}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 
-					<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Wind.Name, Converter={StaticResource CapitalizeConverter}}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Wind.Name}" TextAlignment="Right" Margin="10,2,10,2"></TextBlock>
 					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Wind.WindValue}" TextAlignment="Left" Margin="10,2,10,2"></TextBlock>
 				</Grid>
 			</StackPanel>

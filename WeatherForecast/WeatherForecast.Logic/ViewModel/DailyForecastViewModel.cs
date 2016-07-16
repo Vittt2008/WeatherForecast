@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using WeatherForecast.Logic.Converter.Temperature;
+using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
@@ -12,11 +12,12 @@ namespace WeatherForecast.Logic.ViewModel
 		private Unit _unit;
 		private readonly float _temperatureDay;
 		private readonly float _temperatureNight;
+		private readonly string _weather;
 
-		public string Weather { get; }
+		public string Weather => WeatherFormatter.Capitalize(_weather);
 		public DateTime Date { get; }
-		public string TemperatureDay => Unit == Unit.Metric ? CelsiusConverter.Convert(_temperatureDay) : FahrenheitConverter.Convert(_temperatureDay);
-		public string TemperatureNight => Unit == Unit.Metric ? CelsiusConverter.Convert(_temperatureNight) : FahrenheitConverter.Convert(_temperatureNight);
+		public string TemperatureDay => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperatureDay) : WeatherFormatter.CelciousToFahrenheit(_temperatureDay);
+		public string TemperatureNight => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperatureNight) : WeatherFormatter.CelciousToFahrenheit(_temperatureNight);
 
 		public Unit Unit
 		{
@@ -36,7 +37,7 @@ namespace WeatherForecast.Logic.ViewModel
 		{
 			_temperatureDay = temperatureDay;
 			_temperatureNight = temperatureNight;
-			Weather = weather;
+			_weather = weather;
 			Date = date;
 		}
 	}

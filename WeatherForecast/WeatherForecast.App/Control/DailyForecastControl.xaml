@@ -12,7 +12,6 @@
 	mc:Ignorable="d">
 
 	<UserControl.Resources>
-		<converter:CapitalizeConverter x:Key="CapitalizeConverter"></converter:CapitalizeConverter>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
 
 		<Style TargetType="TextBlock">
@@ -28,7 +27,7 @@
 				<TextBlock Text="{Binding TemperatureDay}" FontSize="20" VerticalAlignment="Bottom"/>
 				<TextBlock Text="{Binding TemperatureNight}" FontSize="15" Foreground="LightGray" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
 			</StackPanel>
-			<TextBlock Text="{Binding Path=Weather, Converter={StaticResource CapitalizeConverter}}" TextWrapping="Wrap" FontSize="14"/>
+			<TextBlock Text="{Binding Weather}" TextWrapping="Wrap" FontSize="14"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

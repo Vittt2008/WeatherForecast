@@ -27,7 +27,7 @@ namespace WeatherForecast.Logic.Converter
 			if (string.IsNullOrEmpty(weather))
 				return null;
 
-			switch (weather)
+			switch (weather.ToLower())
 			{
 				case BrokenClouds:
 					weather = string.Format(ImageFormat, "cloudy2.png");
