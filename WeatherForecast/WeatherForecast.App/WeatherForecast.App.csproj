@@ -110,8 +110,6 @@
     <Compile Include="Control\WeatherForecastControl.xaml.cs">
       <DependentUpon>WeatherForecastControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomTextBox.cs" />
-    <Compile Include="DragInCanvasbehavior.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

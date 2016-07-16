@@ -1,10 +1,6 @@
 ﻿using System;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using WeatherForecast.Logic.Entity.Forecast;
-using WeatherForecast.Logic.Entity.Weather;
 
 namespace WeatherForecast.Logic.Converter
 {
