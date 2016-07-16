@@ -7,10 +7,10 @@ namespace WeatherForecast.Logic.Service
 {
 	public interface IWeatherService
 	{
-		Task<WeatherData> GetDailyForecast(string city);
+		Task<WeatherData> GetDailyForecastAsync(string city);
 
-		Task<WeatherData> GetHoursForecast(string city);
+		Task<WeatherData> GetHoursForecastAsync(string city);
 
-		Task<CurrentWeather> GetCurrentWeather(string city);
+		Task<CurrentWeather> GetCurrentWeatherAsync(string city);
 	}
 }

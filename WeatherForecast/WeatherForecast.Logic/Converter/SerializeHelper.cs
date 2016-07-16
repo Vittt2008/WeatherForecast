@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace WeatherForecast.Logic
+namespace WeatherForecast.Logic.Converter
 {
 	public static class SerializeHelper
 	{

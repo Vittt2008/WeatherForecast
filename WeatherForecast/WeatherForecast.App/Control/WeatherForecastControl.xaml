@@ -5,8 +5,13 @@
 	xmlns:local="using:WeatherForecast.App.Control"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:converter="using:WeatherForecast.Logic.Converter"
 	mc:Ignorable="d"
 	x:Name="WeatherControl">
+
+	<UserControl.Resources>
+		<converter:UnitToBooleanConverter x:Key="UnitToBooleanConverter"></converter:UnitToBooleanConverter>
+	</UserControl.Resources>
 
 	<Grid x:Name="Root">
 		<Grid.Background>
@@ -40,6 +45,10 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
+		</StackPanel>
+
+		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30">
+			<ToggleSwitch  Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" OnContent="Fahrenheit" OffContent="Celcious" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

@@ -11,14 +11,14 @@ namespace WeatherForecast.Logic.ViewModel
 	{
 		private static readonly CultureInfo Culture = new CultureInfo("en-US");
 
-		private Unit _unit;
 		private readonly float _temperature;
 		private readonly WindViewModel _wind;
 		private readonly float _pressure;
 		private readonly int _humidity;
-		private readonly string _weather;
 
-		public string Weather => WeatherFormatter.Capitalize(_weather);
+		private Unit _unit;
+
+		public string Weather { get; }
 		public DateTime DateFrom { get; }
 		public DateTime DateTo { get; }
 		public string Temperature => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperature) : WeatherFormatter.CelciousToFahrenheit(_temperature);
@@ -56,7 +56,7 @@ namespace WeatherForecast.Logic.ViewModel
 			_wind = wind;
 			_pressure = pressure;
 			_humidity = humidity;
-			_weather = weather;
+			Weather = WeatherFormatter.Capitalize(weather);
 			DateFrom = dateFrom;
 			DateTo = dateTo;
 		}

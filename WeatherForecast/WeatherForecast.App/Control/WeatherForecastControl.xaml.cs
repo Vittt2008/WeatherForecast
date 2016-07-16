@@ -39,5 +39,10 @@ namespace WeatherForecast.App.Control
 			get { return (WeatherForecastViewModel)GetValue(WeatherViewModelProperty); }
 			set { SetValue(WeatherViewModelProperty, value); }
 		}
+
+		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+		{
+			WeatherViewModel.Unit = WeatherViewModel.Unit == Unit.Metric ? Unit.Imperial : Unit.Metric;
+		}
 	}
 }

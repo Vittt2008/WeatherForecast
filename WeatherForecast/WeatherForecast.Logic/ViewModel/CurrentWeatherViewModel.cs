@@ -6,17 +6,17 @@ using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class CurrentWeatherViewModel:INotifyPropertyChanged
+	public class CurrentWeatherViewModel : INotifyPropertyChanged
 	{
 		private readonly float _temperature;
 		private readonly DateTime _lastUpdate;
 		private readonly int _humidity;
 		private readonly float _pressure;
+
 		private Unit _unit;
-		private readonly string _weather;
 
 		public string City { get; }
-		public string Weather => WeatherFormatter.Capitalize(_weather);
+		public string Weather { get; }
 		public string Temperature => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperature) : WeatherFormatter.CelciousToFahrenheit(_temperature);
 		public string LastUpdate => WeatherFormatter.FormatLastUpdateDateTime(_lastUpdate);
 		public string Humidity => WeatherFormatter.FormatHumidity(_humidity);
@@ -36,7 +36,7 @@ namespace WeatherForecast.Logic.ViewModel
 				OnPropertyChanged(nameof(Unit));
 				OnPropertyChanged(nameof(Temperature));
 				OnPropertyChanged(nameof(Pressure));
-				
+
 				if (Wind == null)
 					return;
 
@@ -52,7 +52,7 @@ namespace WeatherForecast.Logic.ViewModel
 			_humidity = humidity;
 			_pressure = pressure;
 			City = city;
-			_weather = weather;
+			Weather = WeatherFormatter.Capitalize(weather);
 			Wind = wind;
 		}
 

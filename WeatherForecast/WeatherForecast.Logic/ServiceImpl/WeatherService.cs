@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Refit;
+using WeatherForecast.Logic.Converter;
 using WeatherForecast.Logic.Entity.Forecast;
 using WeatherForecast.Logic.Entity.Weather;
 using WeatherForecast.Logic.Service;
@@ -22,23 +23,23 @@ namespace WeatherForecast.Logic.ServiceImpl
 			_weatherService = weatherService;
 		}
 
-		public async Task<WeatherData> GetDailyForecast(string city)
+		public async Task<WeatherData> GetDailyForecastAsync(string city)
 		{
-			var data = await _weatherService.GetDailyForecast(city);
+			var data = await _weatherService.GetDailyForecastAsync(city);
 			var weatherData = data.DeserializeTo<WeatherData>();
 			return weatherData;
 		}
 
-		public async Task<WeatherData> GetHoursForecast(string city)
+		public async Task<WeatherData> GetHoursForecastAsync(string city)
 		{
-			var data = await _weatherService.GetHoursForecast(city);
+			var data = await _weatherService.GetHoursForecastAsync(city);
 			var weatherData = data.DeserializeTo<WeatherData>();
 			return weatherData;
 		}
 
-		public async Task<CurrentWeather> GetCurrentWeather(string city)
+		public async Task<CurrentWeather> GetCurrentWeatherAsync(string city)
 		{
-			var data = await _weatherService.GetCurrentWeather(city);
+			var data = await _weatherService.GetCurrentWeatherAsync(city);
 			var weatherData = data.DeserializeTo<CurrentWeather>();
 			return weatherData;
 		}

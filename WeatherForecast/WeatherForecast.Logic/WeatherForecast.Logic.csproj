@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\UnitToBooleanConverter.cs" />
     <Compile Include="Converter\WeatherFormatter.cs" />
     <Compile Include="Converter\WeatherToImageConverter.cs" />
     <Compile Include="EntityConverter\EntityConverterEx.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="Entity\Weather\Wind.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerializeHelper.cs" />
+    <Compile Include="Converter\SerializeHelper.cs" />
     <Compile Include="ServiceImpl\InformationService.cs" />
     <Compile Include="ServiceImpl\PhotoService.cs" />
     <Compile Include="ServiceImpl\WeatherService.cs" />

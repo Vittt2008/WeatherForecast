@@ -12,12 +12,12 @@ namespace WeatherForecast.Logic.ViewModel
 	{
 		private static readonly CultureInfo Culture = new CultureInfo("en-US");
 
-		private Unit _unit;
 		private readonly float _temperatureDay;
 		private readonly float _temperatureNight;
-		private readonly string _weather;
 
-		public string Weather => WeatherFormatter.Capitalize(_weather);
+		private Unit _unit;
+
+		public string Weather { get; }
 		public DateTime Date { get; }
 		public string TemperatureDay => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperatureDay) : WeatherFormatter.CelciousToFahrenheit(_temperatureDay);
 		public string TemperatureNight => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperatureNight) : WeatherFormatter.CelciousToFahrenheit(_temperatureNight);
@@ -49,7 +49,7 @@ namespace WeatherForecast.Logic.ViewModel
 		{
 			_temperatureDay = temperatureDay;
 			_temperatureNight = temperatureNight;
-			_weather = weather;
+			Weather = WeatherFormatter.Capitalize(weather);
 			Date = date;
 		}
 

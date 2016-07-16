@@ -6,9 +6,6 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:converter="using:WeatherForecast.Logic.Converter"
-	xmlns:temperature="using:WeatherForecast.Logic.Converter.Temperature"
-	xmlns:pressure="using:WeatherForecast.Logic.Converter.Pressure"
-	xmlns:speed="using:WeatherForecast.Logic.Converter.Speed"
 	mc:Ignorable="d">
 
 	<UserControl.Resources>

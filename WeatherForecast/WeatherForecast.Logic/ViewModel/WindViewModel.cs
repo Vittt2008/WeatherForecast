@@ -8,6 +8,7 @@ namespace WeatherForecast.Logic.ViewModel
 	public class WindViewModel : INotifyPropertyChanged
 	{
 		private Unit _unit;
+
 		public string Name { get; }
 		public float Value { get; }
 		public string DirectionName { get; }

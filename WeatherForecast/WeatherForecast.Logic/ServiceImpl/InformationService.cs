@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using WeatherForecast.Logic.EntityConverter;
+using WeatherForecast.Logic.Service;
 using WeatherForecast.Logic.ViewModel;
 
 namespace WeatherForecast.Logic.ServiceImpl
 {
 	public class InformationService
 	{
-		private readonly WeatherService _weatherService;
-		private readonly PhotoService _flickrService;
+		private readonly IWeatherService _weatherService;
+		private readonly IPhotoService _flickrService;
 
 		public InformationService()
 		{
@@ -19,12 +19,18 @@ namespace WeatherForecast.Logic.ServiceImpl
 			_flickrService = new PhotoService();
 		}
 
-		public async Task<WeatherForecastViewModel> GetWeather(string city)
+		public InformationService(IWeatherService weatherService, IPhotoService photoService)
 		{
-			var currentWeatherTask = _weatherService.GetCurrentWeather(city);
-			var dailyWeatherTask = _weatherService.GetDailyForecast(city);
-			var hoursWeatherTask = _weatherService.GetHoursForecast(city);
-			var flickrPhotoTask = _flickrService.GetFlickUrlPhoto(city);
+			_weatherService = weatherService;
+			_flickrService = photoService;
+		}
+
+		public async Task<WeatherForecastViewModel> GetWeatherAsync(string city)
+		{
+			var currentWeatherTask = _weatherService.GetCurrentWeatherAsync(city);
+			var dailyWeatherTask = _weatherService.GetDailyForecastAsync(city);
+			var hoursWeatherTask = _weatherService.GetHoursForecastAsync(city);
+			var flickrPhotoTask = _flickrService.GetFlickUrlPhotoAsync(city);
 
 			await Task.WhenAll(currentWeatherTask, dailyWeatherTask, hoursWeatherTask, flickrPhotoTask);
 
@@ -33,7 +39,7 @@ namespace WeatherForecast.Logic.ServiceImpl
 			var hoursWeatherData = await hoursWeatherTask;
 			var cityPhotoUrl = (await flickrPhotoTask).RandomPhotoUrl;
 			var cityImage = !string.IsNullOrEmpty(cityPhotoUrl)
-				? await _flickrService.GetImageFromUrl(cityPhotoUrl)
+				? await _flickrService.GetImageFromUrlAsync(cityPhotoUrl)
 				: new BitmapImage(new Uri("ms-appx:///Assets/city_photo.jpg"));
 
 			var currentWeatherViewModel = weatherData.ToViewModel();
