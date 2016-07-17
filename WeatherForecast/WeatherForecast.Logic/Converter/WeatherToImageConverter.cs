@@ -1,10 +1,6 @@
 ﻿using System;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using WeatherForecast.Logic.Entity.Forecast;
-using WeatherForecast.Logic.Entity.Weather;
 
 namespace WeatherForecast.Logic.Converter
 {
@@ -27,7 +23,7 @@ namespace WeatherForecast.Logic.Converter
 			if (string.IsNullOrEmpty(weather))
 				return null;
 
-			switch (weather)
+			switch (weather.ToLower())
 			{
 				case BrokenClouds:
 					weather = string.Format(ImageFormat, "cloudy2.png");

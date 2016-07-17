@@ -4,9 +4,9 @@
 
 namespace WeatherForecast.App.Control
 {
-	public sealed partial class CurrentWeatherControl : UserControl
+	public sealed partial class DailyForecastControl : UserControl
 	{
-		public CurrentWeatherControl()
+		public DailyForecastControl()
 		{
 			InitializeComponent();
 		}

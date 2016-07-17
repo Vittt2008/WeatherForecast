@@ -107,17 +107,10 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter\CapitalizeConverter.cs" />
-    <Compile Include="Converter\HumidityConverter.cs" />
-    <Compile Include="Converter\InternetImageConverter.cs" />
-    <Compile Include="Converter\LastUpdateConverter.cs" />
-    <Compile Include="Converter\Pressure\InHgConverter.cs" />
-    <Compile Include="Converter\Pressure\MmHgConverter.cs" />
-    <Compile Include="Converter\Speed\MetresPerSecondConverter.cs" />
-    <Compile Include="Converter\Speed\MilesPerHourConverter.cs" />
-    <Compile Include="Converter\Temperature\CelsiusConverter.cs" />
-    <Compile Include="Converter\Temperature\FahrenheitConverter.cs" />
+    <Compile Include="Converter\UnitToBooleanConverter.cs" />
+    <Compile Include="Converter\WeatherFormatter.cs" />
     <Compile Include="Converter\WeatherToImageConverter.cs" />
+    <Compile Include="DelegateCommand.cs" />
     <Compile Include="EntityConverter\EntityConverterEx.cs" />
     <Compile Include="Entity\Forecast\Location.cs" />
     <Compile Include="Entity\Forecast\Clouds.cs" />
@@ -145,15 +138,23 @@
     <Compile Include="Entity\Weather\Speed.cs" />
     <Compile Include="Entity\Weather\Weather.cs" />
     <Compile Include="Entity\Weather\Wind.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerializeHelper.cs" />
+    <Compile Include="Converter\SerializeHelper.cs" />
+    <Compile Include="ServiceImpl\InformationService.cs" />
     <Compile Include="ServiceImpl\PhotoService.cs" />
     <Compile Include="ServiceImpl\WeatherService.cs" />
     <Compile Include="Service\IPhotoServiceInternal.cs" />
     <Compile Include="Service\IPhotoService.cs" />
     <Compile Include="Service\IWeatherService.cs" />
     <Compile Include="Service\IWeatherServiceInternal.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CurrentWeatherViewModel.cs" />
+    <Compile Include="ViewModel\DailyForecastViewModel.cs" />
+    <Compile Include="ViewModel\HoursForecastViewModel.cs" />
+    <Compile Include="ViewModel\Unit.cs" />
+    <Compile Include="ViewModel\WeatherForecastViewModel.cs" />
+    <Compile Include="Entity\WeatherForecastInfo.cs" />
     <Compile Include="ViewModel\WindViewModel.cs" />
     <EmbeddedResource Include="Properties\WeatherForecast.Logic.rd.xml" />
   </ItemGroup>

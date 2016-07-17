@@ -1,27 +1,26 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using WeatherForecast.Logic.Annotations;
 using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class CurrentWeatherViewModel : BaseViewModel
+	public class HoursForecastViewModel: BaseViewModel
 	{
 		private readonly float _temperature;
-		private readonly DateTime _lastUpdate;
-		private readonly int _humidity;
+		private readonly WindViewModel _wind;
 		private readonly float _pressure;
+		private readonly int _humidity;
 
 		private Unit _unit;
 
-		public string City { get; }
 		public string Weather { get; }
+		public DateTime DateFrom { get; }
+		public DateTime DateTo { get; }
 		public string Temperature => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperature) : WeatherFormatter.CelciousToFahrenheit(_temperature);
-		public string LastUpdate => WeatherFormatter.FormatLastUpdateDateTime(_lastUpdate);
-		public string Humidity => WeatherFormatter.FormatHumidity(_humidity);
+		public string Wind => _wind.FullInfo;
 		public string Pressure => Unit == Unit.Metric ? WeatherFormatter.HPaToMmHg(_pressure) : WeatherFormatter.HPaToInHg(_pressure);
-		public WindViewModel Wind { get; }
+		public string Humidity => WeatherFormatter.FormatHumidity(_humidity);
+		public DateTime Date => DateFrom.Date;
+		public string Hours => $"{DateFrom.ToString("t")} - {DateTo.ToString("t")}";
 
 		public Unit Unit
 		{
@@ -37,23 +36,23 @@ namespace WeatherForecast.Logic.ViewModel
 				OnPropertyChanged(nameof(Temperature));
 				OnPropertyChanged(nameof(Pressure));
 
-				if (Wind == null)
+				if (_wind == null)
 					return;
 
-				Wind.Unit = value;
+				_wind.Unit = value;
 				OnPropertyChanged(nameof(Wind));
 			}
 		}
 
-		public CurrentWeatherViewModel(float temperature, DateTime lastUpdate, int humidity, float pressure, string city, string weather, WindViewModel wind)
+		public HoursForecastViewModel(float temperature, WindViewModel wind, float pressure, int humidity, string weather, DateTime dateFrom, DateTime dateTo)
 		{
 			_temperature = temperature;
-			_lastUpdate = lastUpdate;
-			_humidity = humidity;
+			_wind = wind;
 			_pressure = pressure;
-			City = city;
+			_humidity = humidity;
 			Weather = WeatherFormatter.Capitalize(weather);
-			Wind = wind;
+			DateFrom = dateFrom;
+			DateTo = dateTo;
 		}
 	}
 }

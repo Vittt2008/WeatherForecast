@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace WeatherForecast.Logic
+namespace WeatherForecast.Logic.Converter
 {
 	public static class SerializeHelper
 	{
@@ -16,7 +15,7 @@ namespace WeatherForecast.Logic
 			}
 		}
 
-		public static T Parse<T>(this string xml)
+		public static T DeserializeTo<T>(this string xml)
 		{
 			var serializer = new XmlSerializer(typeof(T));
 			using (var stringReader = new StringReader(xml))

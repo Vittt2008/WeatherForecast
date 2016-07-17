@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.ServiceModel.Channels;
+using System.Diagnostics;
+using System.Globalization;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.ApplicationInsights;
 
 namespace WeatherForecast.App
 {
@@ -24,18 +16,20 @@ namespace WeatherForecast.App
 	/// </summary>
 	sealed partial class App : Application
 	{
+		private static readonly CultureInfo Culture = new CultureInfo("en-US");
+
 		/// <summary>
 		/// Инициализирует одноэлементный объект приложения.  Это первая выполняемая строка разрабатываемого
 		/// кода; поэтому она является логическим эквивалентом main() или WinMain().
 		/// </summary>
 		public App()
 		{
-			Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-				Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-				Microsoft.ApplicationInsights.WindowsCollectors.Session);
-			this.InitializeComponent();
-			this.Suspending += OnSuspending;
-			this.UnhandledException += OnUnhandledException;
+			WindowsAppInitializer.InitializeAsync(
+				WindowsCollectors.Metadata |
+				WindowsCollectors.Session);
+			InitializeComponent();
+			Suspending += OnSuspending;
+			UnhandledException += OnUnhandledException;
 		}
 
 		/// <summary>
@@ -47,9 +41,9 @@ namespace WeatherForecast.App
 		{
 
 #if DEBUG
-			if (System.Diagnostics.Debugger.IsAttached)
+			if (Debugger.IsAttached)
 			{
-				this.DebugSettings.EnableFrameRateCounter = true;
+				DebugSettings.EnableFrameRateCounter = true;
 			}
 #endif
 

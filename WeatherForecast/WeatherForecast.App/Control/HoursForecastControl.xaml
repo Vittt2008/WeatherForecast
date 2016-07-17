@@ -1,0 +1,32 @@
+﻿<UserControl
+	x:Class="WeatherForecast.App.Control.HoursForecastControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:WeatherForecast.App.Control"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:converter="using:WeatherForecast.Logic.Converter"
+	mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
+	</UserControl.Resources>
+
+	<Grid>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
+			<TextBlock Text="{Binding Hours}" />
+			<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
+			<TextBlock Text="{Binding Temperature}" Style="{StaticResource WhiteTitle}" TextAlignment="Left"/>
+			<TextBlock Text="{Binding Pressure}" />
+
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="{Binding Weather}" />
+				<TextBlock Text="{Binding Humidity}" Margin="5,0,0,0"></TextBlock>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="{Binding Wind}"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</UserControl>
