@@ -110,6 +110,7 @@
     <Compile Include="Converter\UnitToBooleanConverter.cs" />
     <Compile Include="Converter\WeatherFormatter.cs" />
     <Compile Include="Converter\WeatherToImageConverter.cs" />
+    <Compile Include="DelegateCommand.cs" />
     <Compile Include="EntityConverter\EntityConverterEx.cs" />
     <Compile Include="Entity\Forecast\Location.cs" />
     <Compile Include="Entity\Forecast\Clouds.cs" />

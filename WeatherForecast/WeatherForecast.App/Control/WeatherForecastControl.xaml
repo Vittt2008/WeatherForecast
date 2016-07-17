@@ -48,7 +48,16 @@
 		</StackPanel>
 
 		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30">
-			<ToggleSwitch Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" OnContent="Fahrenheit" OffContent="Celcious" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+			<ToggleSwitch Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay}" OnContent="Fahrenheit" OffContent="Celcious"/>
+			<Button Command="{Binding ElementName=WeatherControl, Path=WeatherViewModel.ChangeUnitCommand}" Margin="0,5,0,0" HorizontalAlignment="Stretch">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Now unit is"/>
+						<TextBlock Text="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit}" Margin="3,0,0,0"/>
+					</StackPanel>
+					<TextBlock Text="Click me to change" TextAlignment="Center"></TextBlock>
+				</StackPanel>
+			</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

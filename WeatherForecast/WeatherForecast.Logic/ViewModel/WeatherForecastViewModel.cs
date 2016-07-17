@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Windows.UI.Xaml.Media.Imaging;
 using WeatherForecast.Logic.Annotations;
 using WeatherForecast.Logic.Entity;
@@ -78,6 +79,8 @@ namespace WeatherForecast.Logic.ViewModel
 				}
 			}
 		}
+
+		public ICommand ChangeUnitCommand => new DelegateCommand(data => Unit = Unit == Unit.Metric ? Unit.Imperial : Unit.Metric);
 
 		public void UpdateWeatherInfo(WeatherForecastInfo newViewModel)
 		{
