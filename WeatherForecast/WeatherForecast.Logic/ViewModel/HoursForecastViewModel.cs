@@ -1,16 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using WeatherForecast.Logic.Annotations;
 using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
 	public class HoursForecastViewModel: BaseViewModel
 	{
-		private static readonly CultureInfo Culture = new CultureInfo("en-US");
-
 		private readonly float _temperature;
 		private readonly WindViewModel _wind;
 		private readonly float _pressure;

@@ -6,6 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:converter="using:WeatherForecast.Logic.Converter"
+	xmlns:viewModel="using:WeatherForecast.Logic.ViewModel"
 	mc:Ignorable="d"
 	x:Name="WeatherControl">
 
@@ -15,7 +16,6 @@
 
 	<Grid x:Name="Root">
 		<Grid.Background>
-			<!--<ImageBrush ImageSource="../Assets/city_photo.jpg" Stretch="UniformToFill"></ImageBrush>-->
 			<ImageBrush ImageSource="{Binding ElementName=WeatherControl, Path=WeatherViewModel.CityPhoto}" Stretch="UniformToFill"></ImageBrush>
 		</Grid.Background>
 		<StackPanel x:Name="OpacityContainer" Background="Black" Opacity="0.5"/>
@@ -48,8 +48,7 @@
 		</StackPanel>
 
 		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30">
-			<ToggleSwitch  Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" OnContent="Fahrenheit" OffContent="Celcious" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-			<TextBox x:Name="CityTextBox" Text="Sankt-Peterburg" TextAlignment="Center" TextChanged="TextBoxOnTextChanged"></TextBox>
+			<ToggleSwitch Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" OnContent="Fahrenheit" OffContent="Celcious" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

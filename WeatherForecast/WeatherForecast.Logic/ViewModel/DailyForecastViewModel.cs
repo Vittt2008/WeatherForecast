@@ -10,8 +10,6 @@ namespace WeatherForecast.Logic.ViewModel
 {
 	public class DailyForecastViewModel : BaseViewModel
 	{
-		private static readonly CultureInfo Culture = new CultureInfo("en-US");
-
 		private readonly float _temperatureDay;
 		private readonly float _temperatureNight;
 
@@ -21,7 +19,7 @@ namespace WeatherForecast.Logic.ViewModel
 		public DateTime Date { get; }
 		public string TemperatureDay => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperatureDay) : WeatherFormatter.CelciousToFahrenheit(_temperatureDay);
 		public string TemperatureNight => Unit == Unit.Metric ? WeatherFormatter.CelciousToCelcious(_temperatureNight) : WeatherFormatter.CelciousToFahrenheit(_temperatureNight);
-		public string Day => Date.ToString("ddd dd", Culture);
+		public string Day => Date.ToString("ddd dd", WeatherFormatter.Culture);
 		public List<HoursForecastViewModel> HoursForecasts { get; set; }
 
 		public Unit Unit

@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using WeatherForecast.Logic.Entity;
 using WeatherForecast.Logic.ServiceImpl;
 using WeatherForecast.Logic.ViewModel;
 
@@ -33,28 +34,37 @@ namespace WeatherForecast.App.Control
 		public WeatherForecastControl()
 		{
 			InitializeComponent();
+			WeatherViewModel = new WeatherForecastViewModel();
 		}
 
-		public WeatherForecastViewModel WeatherViewModel
+		private WeatherForecastViewModel WeatherViewModel
 		{
 			get { return (WeatherForecastViewModel)GetValue(WeatherViewModelProperty); }
 			set { SetValue(WeatherViewModelProperty, value); }
 		}
 
-		public void UpdateWeatherForecast(WeatherForecastViewModel newViewModel)
+		public void UpdateWeatherInfo(WeatherForecastInfo weatherForecastInfo)
 		{
-			var unit = WeatherViewModel?.Unit ?? Unit.Metric;
-			WeatherViewModel = newViewModel;
-			WeatherViewModel.Unit = unit;
+			WeatherViewModel.UpdateWeatherInfo(weatherForecastInfo);
 		}
 
-		private async void TextBoxOnTextChanged(object sender, TextChangedEventArgs e)
+		public WeatherForecastInfo WeatherInfo
 		{
-			if (string.IsNullOrEmpty(CityTextBox.Text))
-				return;
-
-			var weatherViewModel = await new InformationService().GetWeatherAsync(CityTextBox.Text);
-			UpdateWeatherForecast(weatherViewModel);
+			get
+			{
+				return new WeatherForecastInfo
+				{
+					CityPhoto = WeatherViewModel.CityPhoto,
+					CurrentWeather = WeatherViewModel.CurrentWeather,
+					DailyWeather = WeatherViewModel.DailyWeather
+				};
+			}
+			set
+			{
+				if (value == null)
+					return;
+				WeatherViewModel.UpdateWeatherInfo(value);
+			}
 		}
 	}
 }

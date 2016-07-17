@@ -5,30 +5,22 @@
 	xmlns:local="using:WeatherForecast.App.Control"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:temperature="using:WeatherForecast.Logic.Converter.Temperature"
 	xmlns:converter="using:WeatherForecast.Logic.Converter"
-	xmlns:pressure="using:WeatherForecast.Logic.Converter.Pressure"
-	xmlns:speed="using:WeatherForecast.Logic.Converter.Speed"
 	mc:Ignorable="d">
 
 	<UserControl.Resources>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
-
-		<Style TargetType="TextBlock">
-			<Setter Property="TextBlock.Foreground" Value="White"></Setter>
-		</Style>
 	</UserControl.Resources>
 
-	<Grid x:Name="rootContainer">
-		<StackPanel x:Name="opacityContainer"/>
+	<Grid>
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock Text="{Binding City}" TextAlignment="Center" FontSize="22"/>
+			<TextBlock Text="{Binding City}" Style="{StaticResource WhiteTitle}"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 				<Image Height="80" Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
-				<TextBlock Text="{Binding Temperature}" FontSize="44" VerticalAlignment="Center"></TextBlock>
+				<TextBlock Text="{Binding Temperature}" VerticalAlignment="Center" Style="{StaticResource WhiteHeader}"/>
 			</StackPanel>
-			<TextBlock Text="{Binding Weather}" TextAlignment="Center" FontSize="22"/>
-			<TextBlock Text="{Binding LastUpdate}" TextAlignment="Center"></TextBlock>
+			<TextBlock Text="{Binding Weather}" Style="{StaticResource WhiteTitle}"/>
+			<TextBlock Text="{Binding LastUpdate}" TextAlignment="Center"/>
 			<StackPanel HorizontalAlignment="Center">
 				<Grid>
 					<Grid.RowDefinitions>

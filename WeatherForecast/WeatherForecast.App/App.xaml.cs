@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Popups;
@@ -15,6 +16,8 @@ namespace WeatherForecast.App
 	/// </summary>
 	sealed partial class App : Application
 	{
+		private static readonly CultureInfo Culture = new CultureInfo("en-US");
+
 		/// <summary>
 		/// Инициализирует одноэлементный объект приложения.  Это первая выполняемая строка разрабатываемого
 		/// кода; поэтому она является логическим эквивалентом main() или WinMain().

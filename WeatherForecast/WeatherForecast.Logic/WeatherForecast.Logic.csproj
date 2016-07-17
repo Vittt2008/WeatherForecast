@@ -153,6 +153,7 @@
     <Compile Include="ViewModel\HoursForecastViewModel.cs" />
     <Compile Include="ViewModel\Unit.cs" />
     <Compile Include="ViewModel\WeatherForecastViewModel.cs" />
+    <Compile Include="Entity\WeatherForecastInfo.cs" />
     <Compile Include="ViewModel\WindViewModel.cs" />
     <EmbeddedResource Include="Properties\WeatherForecast.Logic.rd.xml" />
   </ItemGroup>

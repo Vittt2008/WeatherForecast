@@ -4,16 +4,55 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Media.Imaging;
 using WeatherForecast.Logic.Annotations;
+using WeatherForecast.Logic.Entity;
 
 namespace WeatherForecast.Logic.ViewModel
 {
 	public class WeatherForecastViewModel : BaseViewModel
 	{
 		private Unit _unit;
+		private BitmapImage _cityPhoto;
+		private CurrentWeatherViewModel _currentWeather;
+		private List<DailyForecastViewModel> _dailyWeather;
 
-		public BitmapImage CityPhoto { get; set; }
-		public CurrentWeatherViewModel CurrentWeather { get; set; }
-		public List<DailyForecastViewModel> DailyWeather { get; set; }
+		public BitmapImage CityPhoto
+		{
+			get { return _cityPhoto; }
+			set
+			{
+				if (_cityPhoto == value)
+					return;
+
+				_cityPhoto = value;
+				OnPropertyChanged(nameof(CityPhoto));
+			}
+		}
+
+		public CurrentWeatherViewModel CurrentWeather
+		{
+			get { return _currentWeather; }
+			set
+			{
+				if (_currentWeather == value)
+					return;
+
+				_currentWeather = value;
+				OnPropertyChanged(nameof(CurrentWeather));
+			}
+		}
+
+		public List<DailyForecastViewModel> DailyWeather
+		{
+			get { return _dailyWeather; }
+			set
+			{
+				if (_dailyWeather == value)
+					return;
+
+				_dailyWeather = value;
+				OnPropertyChanged(nameof(DailyWeather));
+			}
+		}
 
 		public Unit Unit
 		{
@@ -38,6 +77,13 @@ namespace WeatherForecast.Logic.ViewModel
 					OnPropertyChanged(nameof(DailyWeather));
 				}
 			}
+		}
+
+		public void UpdateWeatherInfo(WeatherForecastInfo newViewModel)
+		{
+			CityPhoto = newViewModel.CityPhoto;
+			CurrentWeather = newViewModel.CurrentWeather;
+			DailyWeather = newViewModel.DailyWeather;
 		}
 	}
 }

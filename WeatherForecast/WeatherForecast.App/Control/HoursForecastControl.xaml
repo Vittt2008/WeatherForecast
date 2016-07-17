@@ -10,27 +10,22 @@
 
 	<UserControl.Resources>
 		<converter:WeatherToImageConverter x:Key="WeatherToImageConverter"></converter:WeatherToImageConverter>
-
-		<Style TargetType="TextBlock">
-			<Setter Property="TextBlock.Foreground" Value="White"></Setter>
-		</Style>
 	</UserControl.Resources>
 
 	<Grid>
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
-			<TextBlock Text="{Binding Hours}" FontSize="14"/>
+			<TextBlock Text="{Binding Hours}" />
 			<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" Height="30" HorizontalAlignment="Left"/>
-			<TextBlock Text="{Binding Temperature}" FontSize="20" VerticalAlignment="Bottom"/>
-
-			<TextBlock Text="{Binding Pressure}" TextAlignment="Left"></TextBlock>
+			<TextBlock Text="{Binding Temperature}" Style="{StaticResource WhiteTitle}" TextAlignment="Left"/>
+			<TextBlock Text="{Binding Pressure}" />
 
 			<StackPanel Orientation="Horizontal">
-				<TextBlock Text="{Binding Weather}" TextWrapping="Wrap" FontSize="14"/>
-				<TextBlock Text="{Binding Humidity}" TextAlignment="Left" FontSize="14" Margin="5,0,0,0"></TextBlock>
+				<TextBlock Text="{Binding Weather}" />
+				<TextBlock Text="{Binding Humidity}" Margin="5,0,0,0"></TextBlock>
 			</StackPanel>
 
 			<StackPanel Orientation="Horizontal">
-				<TextBlock Text="{Binding Wind}" TextAlignment="Left"/>
+				<TextBlock Text="{Binding Wind}"/>
 			</StackPanel>
 		</StackPanel>
 	</Grid>

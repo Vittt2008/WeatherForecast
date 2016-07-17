@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
+using WeatherForecast.Logic.Entity;
 using WeatherForecast.Logic.EntityConverter;
 using WeatherForecast.Logic.Service;
 using WeatherForecast.Logic.ViewModel;
@@ -25,7 +26,7 @@ namespace WeatherForecast.Logic.ServiceImpl
 			_flickrService = photoService;
 		}
 
-		public async Task<WeatherForecastViewModel> GetWeatherAsync(string city)
+		public async Task<WeatherForecastInfo> GetWeatherAsync(string city)
 		{
 			var currentWeatherTask = _weatherService.GetCurrentWeatherAsync(city);
 			var dailyWeatherTask = _weatherService.GetDailyForecastAsync(city);
@@ -47,13 +48,13 @@ namespace WeatherForecast.Logic.ServiceImpl
 			var hoursViewModels = hoursWeatherData.Times.Select(x => x.ToHoursViewModel()).ToList();
 			dailyViewModels.ForEach(x => x.HoursForecasts = hoursViewModels.Where(y => x.Date == y.Date).ToList());
 
-			var weatherForecastViewModel = new WeatherForecastViewModel
+			var weatherForecast = new WeatherForecastInfo
 			{
 				CityPhoto = cityImage,
 				CurrentWeather = currentWeatherViewModel,
 				DailyWeather = dailyViewModels
 			};
-			return weatherForecastViewModel;
+			return weatherForecast;
 		}
 	}
 }
