@@ -16,12 +16,12 @@
 
 	<Grid x:Name="Root">
 		<Grid.Background>
-			<ImageBrush ImageSource="{Binding ElementName=WeatherControl, Path=WeatherViewModel.CityPhoto}" Stretch="UniformToFill"></ImageBrush>
+			<ImageBrush ImageSource="{Binding WeatherViewModel.CityPhoto, ElementName=WeatherControl}" Stretch="UniformToFill"></ImageBrush>
 		</Grid.Background>
 		<StackPanel x:Name="OpacityContainer" Background="Black" Opacity="0.5"/>
 		<StackPanel Margin="0,20">
-			<local:CurrentWeatherControl Height="auto" DataContext="{Binding ElementName=WeatherControl, Path=WeatherViewModel.CurrentWeather}"></local:CurrentWeatherControl>
-			<ListView x:Name="DailyWeatherList" ItemsSource="{Binding ElementName=WeatherControl, Path=WeatherViewModel.DailyWeather}" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
+			<local:CurrentWeatherControl Height="auto" DataContext="{Binding WeatherViewModel.CurrentWeather, ElementName=WeatherControl}"></local:CurrentWeatherControl>
+			<ListView x:Name="DailyWeatherList" ItemsSource="{Binding WeatherViewModel.DailyWeather, ElementName=WeatherControl}" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
 				<ListView.ItemsPanel>
 					<ItemsPanelTemplate>
 						<StackPanel Orientation="Horizontal" />
@@ -33,7 +33,7 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-			<ListView x:Name="HoursWeatherList" ItemsSource="{Binding ElementName=DailyWeatherList, Path=SelectedValue.HoursForecasts}" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
+			<ListView x:Name="HoursWeatherList" ItemsSource="{Binding SelectedValue.HoursForecasts, ElementName=DailyWeatherList}" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled" HorizontalAlignment="Center">
 				<ListView.ItemsPanel>
 					<ItemsPanelTemplate>
 						<StackPanel Orientation="Horizontal" />
@@ -48,12 +48,12 @@
 		</StackPanel>
 
 		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30">
-			<ToggleSwitch Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay}" OnContent="Fahrenheit" OffContent="Celcious"/>
-			<Button Command="{Binding ElementName=WeatherControl, Path=WeatherViewModel.ChangeUnitCommand}" Margin="0,5,0,0" HorizontalAlignment="Stretch">
+			<ToggleSwitch Foreground="White" IsOn="{Binding WeatherViewModel.Unit, ElementName=WeatherControl, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay}" OnContent="Fahrenheit" OffContent="Celcious"/>
+			<Button Command="{Binding WeatherViewModel.ChangeUnitCommand, ElementName=WeatherControl}" Margin="0,5,0,0" HorizontalAlignment="Stretch">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="Now unit is"/>
-						<TextBlock Text="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit}" Margin="3,0,0,0"/>
+						<TextBlock Text="{Binding WeatherViewModel.Unit, ElementName=WeatherControl}" Margin="3,0,0,0"/>
 					</StackPanel>
 					<TextBlock Text="Click me to change" TextAlignment="Center"></TextBlock>
 				</StackPanel>
