@@ -22,7 +22,7 @@
 	<Grid x:Name="rootContainer">
 		<StackPanel x:Name="opacityContainer"/>
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock Text="{Binding Path=City}" TextAlignment="Center" FontSize="22"/>
+			<TextBlock Text="{Binding City}" TextAlignment="Center" FontSize="22"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 				<Image Height="80" Source="{Binding Weather, Converter={StaticResource WeatherToImageConverter}}" VerticalAlignment="Center" Margin="10,0,10,0"></Image>
 				<TextBlock Text="{Binding Temperature}" FontSize="44" VerticalAlignment="Center"></TextBlock>

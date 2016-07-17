@@ -7,7 +7,7 @@ using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class HoursForecastViewModel:INotifyPropertyChanged
+	public class HoursForecastViewModel: BaseViewModel
 	{
 		private static readonly CultureInfo Culture = new CultureInfo("en-US");
 
@@ -59,14 +59,6 @@ namespace WeatherForecast.Logic.ViewModel
 			Weather = WeatherFormatter.Capitalize(weather);
 			DateFrom = dateFrom;
 			DateTo = dateTo;
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		[NotifyPropertyChangedInvocator]
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

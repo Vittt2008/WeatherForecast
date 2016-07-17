@@ -18,8 +18,8 @@ namespace WeatherForecast.App
 
 		private async void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			var weatherViewModel = await new InformationService().GetWeatherAsync("Moscow");
-			WeatherForecastControl.WeatherViewModel = weatherViewModel;
+			//var weatherViewModel = await new InformationService().GetWeatherAsync("Moscow");
+			//WeatherForecastControl.WeatherViewModel = weatherViewModel;
 		}
 	}
 }

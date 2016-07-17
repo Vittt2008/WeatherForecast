@@ -6,7 +6,7 @@ using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class CurrentWeatherViewModel : INotifyPropertyChanged
+	public class CurrentWeatherViewModel : BaseViewModel
 	{
 		private readonly float _temperature;
 		private readonly DateTime _lastUpdate;
@@ -54,14 +54,6 @@ namespace WeatherForecast.Logic.ViewModel
 			City = city;
 			Weather = WeatherFormatter.Capitalize(weather);
 			Wind = wind;
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		[NotifyPropertyChangedInvocator]
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

@@ -7,15 +7,13 @@ using WeatherForecast.Logic.Annotations;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class WeatherForecastViewModel : INotifyPropertyChanged
+	public class WeatherForecastViewModel : BaseViewModel
 	{
 		private Unit _unit;
 
 		public BitmapImage CityPhoto { get; set; }
 		public CurrentWeatherViewModel CurrentWeather { get; set; }
 		public List<DailyForecastViewModel> DailyWeather { get; set; }
-
-		public string Fuck => Unit == Unit.Metric ? "METRIC FUCK" : "NOT METRIC FUCK";
 
 		public Unit Unit
 		{
@@ -27,7 +25,6 @@ namespace WeatherForecast.Logic.ViewModel
 
 				_unit = value;
 				OnPropertyChanged(nameof(Unit));
-				OnPropertyChanged(nameof(Fuck));
 
 				if (CurrentWeather != null)
 				{
@@ -41,14 +38,6 @@ namespace WeatherForecast.Logic.ViewModel
 					OnPropertyChanged(nameof(DailyWeather));
 				}
 			}
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		[NotifyPropertyChangedInvocator]
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

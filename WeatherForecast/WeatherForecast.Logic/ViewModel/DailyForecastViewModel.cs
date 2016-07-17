@@ -8,7 +8,7 @@ using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class DailyForecastViewModel : INotifyPropertyChanged
+	public class DailyForecastViewModel : BaseViewModel
 	{
 		private static readonly CultureInfo Culture = new CultureInfo("en-US");
 
@@ -51,14 +51,6 @@ namespace WeatherForecast.Logic.ViewModel
 			_temperatureNight = temperatureNight;
 			Weather = WeatherFormatter.Capitalize(weather);
 			Date = date;
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		[NotifyPropertyChangedInvocator]
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

@@ -49,6 +49,7 @@
 
 		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30">
 			<ToggleSwitch  Foreground="White" IsOn="{Binding ElementName=WeatherControl, Path=WeatherViewModel.Unit, Converter={StaticResource UnitToBooleanConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" OnContent="Fahrenheit" OffContent="Celcious" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+			<TextBox x:Name="CityTextBox" Text="Sankt-Peterburg" TextAlignment="Center" TextChanged="TextBoxOnTextChanged"></TextBox>
 		</StackPanel>
 	</Grid>
 </UserControl>

@@ -5,7 +5,7 @@ using WeatherForecast.Logic.Converter;
 
 namespace WeatherForecast.Logic.ViewModel
 {
-	public class WindViewModel : INotifyPropertyChanged
+	public class WindViewModel : BaseViewModel
 	{
 		private Unit _unit;
 
@@ -37,14 +37,6 @@ namespace WeatherForecast.Logic.ViewModel
 			Value = value;
 			DirectionName = directionName;
 			DirectionValue = directionValue;
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		[NotifyPropertyChangedInvocator]
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

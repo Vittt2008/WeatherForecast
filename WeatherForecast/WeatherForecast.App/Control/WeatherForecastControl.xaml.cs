@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using WeatherForecast.Logic.ServiceImpl;
 using WeatherForecast.Logic.ViewModel;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
@@ -40,9 +41,20 @@ namespace WeatherForecast.App.Control
 			set { SetValue(WeatherViewModelProperty, value); }
 		}
 
-		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+		public void UpdateWeatherForecast(WeatherForecastViewModel newViewModel)
 		{
-			WeatherViewModel.Unit = WeatherViewModel.Unit == Unit.Metric ? Unit.Imperial : Unit.Metric;
+			var unit = WeatherViewModel?.Unit ?? Unit.Metric;
+			WeatherViewModel = newViewModel;
+			WeatherViewModel.Unit = unit;
+		}
+
+		private async void TextBoxOnTextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(CityTextBox.Text))
+				return;
+
+			var weatherViewModel = await new InformationService().GetWeatherAsync(CityTextBox.Text);
+			UpdateWeatherForecast(weatherViewModel);
 		}
 	}
 }

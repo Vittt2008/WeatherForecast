@@ -147,6 +147,7 @@
     <Compile Include="Service\IPhotoService.cs" />
     <Compile Include="Service\IWeatherService.cs" />
     <Compile Include="Service\IWeatherServiceInternal.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CurrentWeatherViewModel.cs" />
     <Compile Include="ViewModel\DailyForecastViewModel.cs" />
     <Compile Include="ViewModel\HoursForecastViewModel.cs" />
