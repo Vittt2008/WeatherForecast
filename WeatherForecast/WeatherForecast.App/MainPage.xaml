@@ -8,7 +8,7 @@
 	xmlns:profile="using:Windows.System.Profile"
 	xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
 	xmlns:control="using:WeatherForecast.App.Control"
-	mc:Ignorable="d" Loaded="Page_Loaded">
+	mc:Ignorable="d" Loaded="PageLoaded">
 
 	<Page.Resources>
 		<FontFamily x:Key="CustomFont">Calibri</FontFamily>
@@ -16,7 +16,6 @@
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<control:WeatherForecastControl x:Name="WeatherForecastControl"/>
-		<!--<control:WeatherForecastControl x:Name="WeatherForecastControl" City="{Binding ElementName=TbCityname, Path=Text}"></control:WeatherForecastControl>-->
-		<!--<TextBox x:Name="TbCityname" HorizontalAlignment="Left" Margin="10,30,10,10" TextWrapping="Wrap" VerticalAlignment="Top" Text="Sankt-Peterburg" Width="200"/>-->
+		<TextBox Name="CityName" Text="Sankt-Peterburg" Margin="30,160" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="160" LostFocus="CityNameOnLostFocus" KeyDown="CityNameOnKeyDown"/>
 	</Grid>
 </Page>
